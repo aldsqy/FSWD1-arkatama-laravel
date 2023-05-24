@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+//Landing Page
+Route::get('/', [ProdukController::class, 'index']);
 
 //Add
 use App\Http\Controllers\UserController;
@@ -31,6 +30,11 @@ use App\Http\Controllers\EditController;
 Route::get('edit/{id}', [EditController::class, 'show']);
 // Route to handle the form submission and update the data
 Route::post('update', [EditController::class, 'update']);
+
+//Dashboard
+use App\Http\Controllers\DashboardController;
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
 
 
 
