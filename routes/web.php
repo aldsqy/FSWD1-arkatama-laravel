@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 //Landing Page
 Route::get('/', [ProdukController::class, 'index']);
 
+//Dashboard
+use App\Http\Controllers\DashboardController;
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
 //Add
 use App\Http\Controllers\UserController;
 Route::get('/add', [UserController::class, 'create']);
@@ -31,9 +35,26 @@ Route::get('edit/{id}', [EditController::class, 'show']);
 // Route to handle the form submission and update the data
 Route::post('update', [EditController::class, 'update']);
 
-//Dashboard
-use App\Http\Controllers\DashboardController;
-Route::get('/dashboard', [DashboardController::class, 'index']);
+//Kategori
+use App\Http\Controllers\Toko\KategoriController;
+Route::get('kategori', [KategoriController::class, 'index']);
+Route::get('kategori/create', [KategoriController::class, 'create']);
+Route::post('kategori/store', [KategoriController::class, 'store'])->name('kategori.store');
+Route::get('kategori/{id}/edit', [KategoriController::class, 'edit']);
+Route::put('kategori/{id}', [KategoriController::class, 'update']);
+Route::delete('kategori/{id}', [KategoriController::class, 'destroy']);
+
+//Produk
+use App\Http\Controllers\Toko\Produk1Controller;
+Route::get('produks', [Produk1Controller::class, 'index']);
+Route::get('produks/create', [Produk1Controller::class, 'create']);
+Route::post('produks/store', [Produk1Controller::class, 'store'])->name('produk.store');
+Route::get('produks/{id}/edit', [Produk1Controller::class, 'edit']);
+Route::put('produks/{id}', [Produk1Controller::class, 'update']);
+Route::delete('produks/{id}', [Produk1Controller::class, 'destroy']);
+
+
+
 
 
 
