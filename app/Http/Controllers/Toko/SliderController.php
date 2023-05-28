@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Toko;
 use App\Models\Slider;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 class SliderController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class SliderController extends Controller
     public function index()
     {
         $slider = Slider::all();
-        return view('slider.slider',compact('slider'));
+        return view('slider.slider', compact('slider'));
     }
 
     /**
@@ -38,13 +39,16 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $slider = Slider::create($request->except(['_token']));
-    
+
         if ($request->hasFile('banner')) {
-            $request->file('banner')->move('images/', $request->file('banner')->getClientOriginalName());
-            $slider->banner = $request->file('banner')->getClientOriginalName();
-            $slider->save();
+            $file = $request->file('banner');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('images/', $filename);
+            $slider->banner = $filename;
         }
-    
+        $slider->save();
+
         return redirect('/slider');
     }
 
@@ -79,22 +83,24 @@ class SliderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        {
+    { {
             $slider = Slider::find($id);
             $slider->update($request->except(['_token', 'submit']));
-        
+
             if ($request->hasFile('banner')) {
-                if ($slider->banner) {
-                    Storage::delete('images/'.$slider->banner);
+                $destination = 'images/' . $slider->banner;
+                if (File::exists($destination)) {
+                    File::delete($destination);
                 }
-        
-                $bannerPath = $request->file('banner')->store('images');
-                $slider->banner = basename($bannerPath);
+                $file = $request->file('banner');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('images/', $filename);
+                $slider->banner = $filename;
             }
-        
-            $slider->save();
-        
+
+            $slider->update();
+
             return redirect('/slider');
         }
     }

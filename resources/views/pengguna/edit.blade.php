@@ -9,7 +9,7 @@
   <div class="form-group">
       <label for="current_avatar">Current Avatar:</label>
       <br>
-      <img src="{{ asset('images/'.$pengguna->avatar)}}" style="width: 40px;">
+      <img src="{{ asset('images/'.$pengguna->avatar)}}" style="width: 40px;"> 
   </div>
   @endif
   <div class="form-group">

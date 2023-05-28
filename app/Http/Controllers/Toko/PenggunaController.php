@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Toko;
 use App\Http\Controllers\Controller;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PenggunaController extends Controller
 {
@@ -41,10 +41,13 @@ class PenggunaController extends Controller
         $pengguna = Pengguna::create($request->except(['_token']));
     
         if ($request->hasFile('avatar')) {
-            $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
-            $pengguna->avatar = $request->file('avatar')->getClientOriginalName();
-            $pengguna->save();
+            $file = $request->file('avatar');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('images/', $filename);
+            $pengguna->avatar = $filename;
         }
+        $pengguna->save();
     
         return redirect('/pengguna');
     }
@@ -86,15 +89,18 @@ class PenggunaController extends Controller
         $pengguna->update($request->except(['_token', 'submit']));
 
         if ($request->hasFile('avatar')) {
-            if ($pengguna->avatar) {
-                Storage::delete('images/'.$pengguna->avatar);
+            $destination = 'images/' . $pengguna->avatar;
+            if (File::exists($destination)) {
+                File::delete($destination);
             }
-
-            $avatarPath = $request->file('avatar')->store('images');
-            $pengguna->avatar = basename($avatarPath);
+            $file = $request->file('avatar');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('images/', $filename);
+            $pengguna->avatar = $filename;
         }
 
-        $pengguna->save();
+        $pengguna->update();
 
         return redirect('/pengguna');
     }
