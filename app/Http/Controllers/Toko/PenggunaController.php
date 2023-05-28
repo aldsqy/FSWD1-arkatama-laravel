@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Toko;
 
-use App\Models\Produk;
 use App\Http\Controllers\Controller;
+use App\Models\Pengguna;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class Produk1Controller extends Controller
+class PenggunaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class Produk1Controller extends Controller
      */
     public function index()
     {
-        $produk = Produk::all();
-        return view('produk.produk',compact('produk'));
+        $pengguna = Pengguna::all();
+        return view('pengguna.pengguna',compact('pengguna'));
     }
 
     /**
@@ -26,7 +27,7 @@ class Produk1Controller extends Controller
      */
     public function create()
     {
-        return view('produk.create');
+        return view('pengguna.create');
     }
 
     /**
@@ -37,10 +38,17 @@ class Produk1Controller extends Controller
      */
     public function store(Request $request)
     {
-        Produk::create($request->except(['_token']));
-        return redirect('/produks');
+        $pengguna = Pengguna::create($request->except(['_token']));
+    
+        if ($request->hasFile('avatar')) {
+            $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
+            $pengguna->avatar = $request->file('avatar')->getClientOriginalName();
+            $pengguna->save();
+        }
+    
+        return redirect('/pengguna');
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -60,8 +68,9 @@ class Produk1Controller extends Controller
      */
     public function edit($id)
     {
-        $produk = Produk::find($id);
-        return view('produk.edit', compact('produk'));
+        $pengguna = Pengguna::find($id);
+        return view('pengguna.edit', compact('pengguna'));
+        return view('pengguna.edit');
     }
 
     /**
@@ -73,9 +82,21 @@ class Produk1Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $produk = Produk::find($id);
-        $produk->update($request->except(['_token', 'submit']));
-        return redirect('/produks');
+        $pengguna = Pengguna::find($id);
+        $pengguna->update($request->except(['_token', 'submit']));
+
+        if ($request->hasFile('avatar')) {
+            if ($pengguna->avatar) {
+                Storage::delete('images/'.$pengguna->avatar);
+            }
+
+            $avatarPath = $request->file('avatar')->store('images');
+            $pengguna->avatar = basename($avatarPath);
+        }
+
+        $pengguna->save();
+
+        return redirect('/pengguna');
     }
 
     /**
@@ -86,8 +107,8 @@ class Produk1Controller extends Controller
      */
     public function destroy($id)
     {
-        $produk = Produk::findOrFail($id);
-        $produk->delete();
-        return redirect('/produks');
+        $pengguna = Pengguna::findOrFail($id);
+        $pengguna->delete();
+        return redirect('/pengguna');
     }
 }

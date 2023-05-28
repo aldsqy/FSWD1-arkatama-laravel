@@ -53,6 +53,33 @@ Route::get('produks/{id}/edit', [Produk1Controller::class, 'edit']);
 Route::put('produks/{id}', [Produk1Controller::class, 'update']);
 Route::delete('produks/{id}', [Produk1Controller::class, 'destroy']);
 
+//Pengguna
+use App\Http\Controllers\Toko\PenggunaController;
+Route::get('pengguna', [PenggunaController::class, 'index']);
+Route::get('pengguna/create', [PenggunaController::class, 'create']);
+Route::post('pengguna/store', [PenggunaController::class, 'store'])->name('pengguna.store');
+Route::get('pengguna/{id}/edit', [PenggunaController::class, 'edit']);
+Route::put('pengguna/{id}', [PenggunaController::class, 'update']);
+Route::delete('pengguna/{id}', [PenggunaController::class, 'destroy']);
+
+//Slider
+use App\Http\Controllers\Toko\SliderController;
+Route::get('slider', [SliderController::class, 'index']);
+Route::get('slider/create', [SliderController::class, 'create']);
+Route::post('slider/store', [SliderController::class, 'store'])->name('slider.store');
+Route::get('slider/{id}/edit', [SliderController::class, 'edit']);
+Route::put('slider/{id}', [SliderController::class, 'update']);
+Route::delete('slider/{id}', [SliderController::class, 'destroy']);
+
+//Grup
+use App\Http\Controllers\Toko\GrupController;
+Route::get('grup', [GrupController::class, 'index']);
+Route::get('grup/create', [GrupController::class, 'create']);
+Route::post('grup/store', [GrupController::class, 'store'])->name('grup.store');
+Route::get('grup/{id}/edit', [GrupController::class, 'edit']);
+Route::put('grup/{id}', [GrupController::class, 'update']);
+Route::delete('grup/{id}', [GrupController::class, 'destroy']);
+
 
 
 

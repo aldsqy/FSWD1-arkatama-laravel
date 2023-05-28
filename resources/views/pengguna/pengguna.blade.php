@@ -3,30 +3,36 @@
 
 @section('content')
 <h3>Welcome to the Dashboard</h3>
-    <a href="{{ url('produks/create') }}" class="btn btn-primary mb-3">Tambah</a>
+    <a href="{{ url('pengguna/create') }}" class="btn btn-primary mb-3">Tambah</a>
 
     <table class="table">
       <thead>
         <tr>
           <th>No</th>
+          <th>avatar</th>
+          <th>email</th>
           <th>nama</th>
-          <th>deskripsi</th>
-          <th>harga</th>
-          <th>status</th>
+          <th>role</th>
+          <th>phone</th>
+          <th>address</th>
           <th>aksi</th>
         </tr>
       </thead>
       <tbody>
-        @foreach ($produk as $item)
+        @foreach ($pengguna as $item)
           <tr>
             <td>{{$loop->iteration}}</td>
+            <td>
+                <img src="{{ asset('images/'.$item->avatar)}}" style="width: 40px;">
+            </td>
+            <td>{{ $item->email }}</td>
             <td>{{ $item->nama }}</td>
-            <td>{{ $item->deskripsi }}</td>
-            <td>{{ $item->harga }}</td>
-            <td>{{ $item->status }}</td>
+            <td>{{ $item->role }}</td>
+            <td>{{ $item->phone }}</td>
+            <td>{{ $item->address }}</td>
             <td class="d-flex">
-                <a href='/produks/{{$item->id}}/edit' class="btn btn-success">Edit</a>
-                <form action="/produks/{{$item->id}}" method="POST">
+                <a href='/pengguna/{{$item->id}}/edit' class="btn btn-success">Edit</a>
+                <form action="/pengguna/{{$item->id}}" method="POST">
                     @csrf
                     @method('delete')
                     <input type="submit" value="Delete" class="btn btn-danger ml-2">

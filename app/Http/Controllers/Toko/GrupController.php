@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Toko;
 
-use App\Models\Produk;
 use App\Http\Controllers\Controller;
+use App\Models\Grup;
 use Illuminate\Http\Request;
 
-class Produk1Controller extends Controller
+class GrupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class Produk1Controller extends Controller
      */
     public function index()
     {
-        $produk = Produk::all();
-        return view('produk.produk',compact('produk'));
+        $grup = Grup::all();
+        return view('grup.grup',compact('grup'));
     }
 
     /**
@@ -26,7 +26,7 @@ class Produk1Controller extends Controller
      */
     public function create()
     {
-        return view('produk.create');
+        return view('grup.create');
     }
 
     /**
@@ -37,8 +37,8 @@ class Produk1Controller extends Controller
      */
     public function store(Request $request)
     {
-        Produk::create($request->except(['_token']));
-        return redirect('/produks');
+        Grup::create($request->except(['_token']));
+        return redirect('/grup');
     }
 
     /**
@@ -60,8 +60,8 @@ class Produk1Controller extends Controller
      */
     public function edit($id)
     {
-        $produk = Produk::find($id);
-        return view('produk.edit', compact('produk'));
+        $grup = Grup::find($id);
+        return view('grup.edit', compact('grup'));
     }
 
     /**
@@ -73,9 +73,9 @@ class Produk1Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $produk = Produk::find($id);
-        $produk->update($request->except(['_token', 'submit']));
-        return redirect('/produks');
+        $grup = Grup::find($id);
+        $grup->update($request->except(['_token', 'submit']));
+        return redirect('/grup');
     }
 
     /**
@@ -86,8 +86,8 @@ class Produk1Controller extends Controller
      */
     public function destroy($id)
     {
-        $produk = Produk::findOrFail($id);
-        $produk->delete();
-        return redirect('/produks');
+        $grup = Grup::findOrFail($id);
+        $grup->delete();
+        return redirect('/grup');
     }
 }

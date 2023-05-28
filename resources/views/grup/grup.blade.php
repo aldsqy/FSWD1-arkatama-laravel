@@ -3,30 +3,25 @@
 
 @section('content')
 <h3>Welcome to the Dashboard</h3>
-    <a href="{{ url('produks/create') }}" class="btn btn-primary mb-3">Tambah</a>
+    <a href="{{ url('grup/create') }}" class="btn btn-primary mb-3">Tambah</a>
 
     <table class="table">
       <thead>
         <tr>
           <th>No</th>
           <th>nama</th>
-          <th>deskripsi</th>
-          <th>harga</th>
-          <th>status</th>
-          <th>aksi</th>
+          <th>role</th>
         </tr>
       </thead>
       <tbody>
-        @foreach ($produk as $item)
+        @foreach ($grup as $item)
           <tr>
             <td>{{$loop->iteration}}</td>
             <td>{{ $item->nama }}</td>
-            <td>{{ $item->deskripsi }}</td>
-            <td>{{ $item->harga }}</td>
-            <td>{{ $item->status }}</td>
+            <td>{{ $item->role }}</td>
             <td class="d-flex">
-                <a href='/produks/{{$item->id}}/edit' class="btn btn-success">Edit</a>
-                <form action="/produks/{{$item->id}}" method="POST">
+                <a href='/grup/{{$item->id}}/edit' class="btn btn-success">Edit</a>
+                <form action="/grup/{{$item->id}}" method="POST">
                     @csrf
                     @method('delete')
                     <input type="submit" value="Delete" class="btn btn-danger ml-2">

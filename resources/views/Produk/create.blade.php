@@ -2,12 +2,12 @@
 @extends('dashboardtemplate')
 
 @section('content')
-<h4>Create New Category</h4>
+<h4>Create New Produk</h4>
 <form action="{{ route('produk.store') }}" method="POST">
   @csrf
   <div class="form-group">
     <label for="nama">Nama:</label>
-    <input type="text" name="nama" class="form-control" placeholder="Enter category">
+    <input type="text" name="nama" class="form-control" placeholder="Enter produk">
   </div>
   <div class="form-group">
     <label for="deskripsi">Deskripsi:</label>

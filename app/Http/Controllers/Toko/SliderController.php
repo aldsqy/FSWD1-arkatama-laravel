@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Toko;
 
-use App\Models\Produk;
+use App\Models\Slider;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-class Produk1Controller extends Controller
+use Illuminate\Support\Facades\Storage;
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class Produk1Controller extends Controller
      */
     public function index()
     {
-        $produk = Produk::all();
-        return view('produk.produk',compact('produk'));
+        $slider = Slider::all();
+        return view('slider.slider',compact('slider'));
     }
 
     /**
@@ -26,7 +26,7 @@ class Produk1Controller extends Controller
      */
     public function create()
     {
-        return view('produk.create');
+        return view('slider.create');
     }
 
     /**
@@ -37,8 +37,15 @@ class Produk1Controller extends Controller
      */
     public function store(Request $request)
     {
-        Produk::create($request->except(['_token']));
-        return redirect('/produks');
+        $slider = Slider::create($request->except(['_token']));
+    
+        if ($request->hasFile('banner')) {
+            $request->file('banner')->move('images/', $request->file('banner')->getClientOriginalName());
+            $slider->banner = $request->file('banner')->getClientOriginalName();
+            $slider->save();
+        }
+    
+        return redirect('/slider');
     }
 
     /**
@@ -60,8 +67,8 @@ class Produk1Controller extends Controller
      */
     public function edit($id)
     {
-        $produk = Produk::find($id);
-        return view('produk.edit', compact('produk'));
+        $slider = Slider::find($id);
+        return view('slider.edit', compact('slider'));
     }
 
     /**
@@ -73,9 +80,23 @@ class Produk1Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $produk = Produk::find($id);
-        $produk->update($request->except(['_token', 'submit']));
-        return redirect('/produks');
+        {
+            $slider = Slider::find($id);
+            $slider->update($request->except(['_token', 'submit']));
+        
+            if ($request->hasFile('banner')) {
+                if ($slider->banner) {
+                    Storage::delete('images/'.$slider->banner);
+                }
+        
+                $bannerPath = $request->file('banner')->store('images');
+                $slider->banner = basename($bannerPath);
+            }
+        
+            $slider->save();
+        
+            return redirect('/slider');
+        }
     }
 
     /**
@@ -86,8 +107,8 @@ class Produk1Controller extends Controller
      */
     public function destroy($id)
     {
-        $produk = Produk::findOrFail($id);
-        $produk->delete();
-        return redirect('/produks');
+        $slider = Slider::findOrFail($id);
+        $slider->delete();
+        return redirect('/slider');
     }
 }
