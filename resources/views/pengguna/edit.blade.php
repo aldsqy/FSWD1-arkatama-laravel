@@ -1,4 +1,4 @@
-@extends('dashboardtemplate')
+@extends('layout.dashboard')
 
 @section('content')
 <h4>Edit Pengguna</h4>
@@ -27,8 +27,9 @@
   <div class="form-group">
       <label for="role">Pilih Role:</label>
       <select name="role" required>
-          <option value="admin" {{ $pengguna->role === 'admin' ? 'selected' : '' }}>Admin</option>
-          <option value="staff" {{ $pengguna->role === 'staff' ? 'selected' : '' }}>Staff</option>
+          <option value="User" {{ $pengguna->role === 'user' ? 'selected' : '' }}>User</option>
+          <option value="Staff" {{ $pengguna->role === 'staff' ? 'selected' : '' }}>Staff</option>
+          <option value="Admin" {{ $pengguna->role === 'admin' ? 'selected' : '' }}>Admin</option>
       </select>
   </div>
   <div class="form-group">

@@ -1,5 +1,5 @@
 <!-- resources/views/home.blade.php -->
-@extends('dashboardtemplate')
+@extends('layout.dashboard')
 
 @section('content')
 <h4>Create New Category</h4>

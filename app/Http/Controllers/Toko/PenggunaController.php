@@ -39,7 +39,7 @@ class PenggunaController extends Controller
     public function store(Request $request)
     {
         $pengguna = Pengguna::create($request->except(['_token']));
-    
+        $pengguna->setAttribute('password', bcrypt($request->password));
         if ($request->hasFile('avatar')) {
             $file = $request->file('avatar');
             $extension = $file->getClientOriginalExtension();

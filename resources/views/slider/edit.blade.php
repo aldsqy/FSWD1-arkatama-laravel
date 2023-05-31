@@ -1,4 +1,4 @@
-@extends('dashboardtemplate')
+@extends('layout.dashboard')
 
 @section('content')
 <h4>Edit Slider</h4>

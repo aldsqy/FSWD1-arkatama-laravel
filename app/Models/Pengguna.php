@@ -3,14 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 
-class Pengguna extends Model
+class Pengguna extends Model implements Authenticatable
 {
-    protected $fillable = ['email', 'nama', 'role', 'avatar', 'phone', 'address', 'password'];
+    use AuthenticatableTrait;
+
+    protected $fillable = [
+        'email', 'nama', 'role', 'avatar', 'phone', 'address', 'password'
+    ];
 
     protected $table = 'pengguna';
 
     protected $casts = [
-        'role' => 'string', // jika Anda ingin mengonversi role ke string
+        'role' => 'string'
     ];
 }

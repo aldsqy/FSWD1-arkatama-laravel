@@ -1,5 +1,5 @@
 <!-- resources/views/home.blade.php -->
-@extends('dashboardtemplate')
+@extends('layout.dashboard')
 
 @section('content')
 <h4>Create New Produk</h4>
@@ -20,8 +20,9 @@
   <div class="form-group">
     <label for="role">Pilih Role:</label>
     <select name="role" required>
-        <option value="admin">Admin</option>
+        <option value="user">User</option>
         <option value="staff">Staff</option>
+        <option value="admin">Admin</option>
     </select>
   </div>
   <div class="form-group">
