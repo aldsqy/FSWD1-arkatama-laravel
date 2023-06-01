@@ -17,9 +17,11 @@ class StafforAdmin
      */
     public function handle(Request $request, Closure $next)
     {
+
         if(Auth::user()->role != 'admin' && Auth::user()->role != 'staff' ){
             abort(404);
         }
         return $next($request);
+
     }
 }

@@ -20,6 +20,7 @@ use App\Http\Controllers\Toko\SliderController;
 use App\Http\Controllers\Toko\GrupController;
 use App\Http\Controllers\DashboardController;
 
+
 // Route::middleware(['auth',])->group(function () {
 //Kategori
 Route::get('kategori', [KategoriController::class, 'index'])->middleware(['auth','admin-staff']);

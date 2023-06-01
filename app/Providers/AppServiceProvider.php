@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         Blade::if('user', function () {
             if (!auth()->check()) {
                 return false;
@@ -42,5 +43,6 @@ class AppServiceProvider extends ServiceProvider
             }
             return auth()->user()->role == "admin";
         });
+
     }
 }

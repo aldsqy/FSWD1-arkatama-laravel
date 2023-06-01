@@ -3,7 +3,6 @@
 @section('content')
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
-
     <div class="info d-flex align-items-center">
       <div class="container">
         <div class="row justify-content-center">

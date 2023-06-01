@@ -17,6 +17,7 @@ class MustAdmin
      */
     public function handle(Request $request, Closure $next)
     {
+
         if(Auth::user()->role != 'admin'){
             abort(404);
         }

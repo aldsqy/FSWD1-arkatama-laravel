@@ -16,8 +16,10 @@ class PenggunaController extends Controller
      */
     public function index()
     {
+
         $pengguna = Pengguna::all();
         return view('pengguna.pengguna',compact('pengguna'));
+
     }
 
     /**
@@ -27,7 +29,9 @@ class PenggunaController extends Controller
      */
     public function create()
     {
+
         return view('pengguna.create');
+
     }
 
     /**
@@ -38,6 +42,7 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
+
         $pengguna = Pengguna::create($request->except(['_token']));
         $pengguna->setAttribute('password', bcrypt($request->password));
         if ($request->hasFile('avatar')) {
@@ -50,6 +55,7 @@ class PenggunaController extends Controller
         $pengguna->save();
 
         return redirect('/pengguna');
+
     }
 
     /**
@@ -71,9 +77,11 @@ class PenggunaController extends Controller
      */
     public function edit($id)
     {
+
         $pengguna = Pengguna::find($id);
         return view('pengguna.edit', compact('pengguna'));
         return view('pengguna.edit');
+
     }
 
     /**
@@ -85,6 +93,7 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $pengguna = Pengguna::find($id);
         $pengguna->update($request->except(['_token', 'submit']));
         $pengguna->setAttribute('password', bcrypt($request->password));
@@ -103,6 +112,7 @@ class PenggunaController extends Controller
         $pengguna->update();
 
         return redirect('/pengguna');
+
     }
 
     /**
@@ -113,8 +123,10 @@ class PenggunaController extends Controller
      */
     public function destroy($id)
     {
+
         $pengguna = Pengguna::findOrFail($id);
         $pengguna->delete();
         return redirect('/pengguna');
+
     }
 }
