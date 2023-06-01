@@ -2,8 +2,10 @@
 @extends('layout.dashboard')
 
 @section('content')
-<h3>Welcome to the Dashboard</h3>
-<br>
+<h1 class="mt-4">Dashboard</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Dashboard</li>
+</ol>
 <div class="row">
   @foreach ($products as $product)
   <div class="col-md-4 mb-4">
@@ -14,7 +16,7 @@
             <p class="card-text">{{ $product['description'] }}</p>
           </div>
       </div>
-  </div>      
+  </div>
   @endforeach
 </div>
 @endsection

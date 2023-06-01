@@ -25,8 +25,8 @@
               @csrf
               <div class="row gy-4">
                 <div>
-                  <input type="hidden" name="avatar" value="{{ asset('images/default.png') }}">
-                </div>                  
+                  <input type="hidden" name="avatar" value="default.png">
+                </div>
                 <div class="col-lg-12 form-group">
                   <h4>Nama Lengkap</h4>
                   <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan nama lengkap" >
@@ -38,7 +38,7 @@
                 <div class="col-lg-12 form-group">
                   <h4>Alamat</h4>
                   <input type="text" class="form-control" name="address" id="address" placeholder="Masukkan alamat">
-                </div>                  
+                </div>
                 <div class="col-lg-12 form-group">
                   <h4>Email</h4>
                   <input type="text" class="form-control" name="email" id="email" placeholder="Your Email" >

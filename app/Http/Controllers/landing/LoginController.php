@@ -29,24 +29,19 @@ class LoginController extends Controller
 
     public function proses(Request $request)
     {
-        $request->validate([
-            'email' => ['required'],
-            'password' => ['required']
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
-        
-        $pengguna = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-    
-        if (Auth::attempt($pengguna)) {
+
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('landingpage');
-        } 
+        }
 
         return back()->with('error', 'Maaf, Kamu Gagal Login');
     }
-    
+
     public function logout(Request $request)
     {
         Auth::logout();
@@ -54,8 +49,8 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('login')->with('success', 'Kamu Telah Berhasil Logout');
     }
-    
-    
-}    
-    
+
+
+}
+
 

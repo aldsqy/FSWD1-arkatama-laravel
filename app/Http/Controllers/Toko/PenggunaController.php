@@ -48,10 +48,10 @@ class PenggunaController extends Controller
             $pengguna->avatar = $filename;
         }
         $pengguna->save();
-    
+
         return redirect('/pengguna');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -87,7 +87,7 @@ class PenggunaController extends Controller
     {
         $pengguna = Pengguna::find($id);
         $pengguna->update($request->except(['_token', 'submit']));
-
+        $pengguna->setAttribute('password', bcrypt($request->password));
         if ($request->hasFile('avatar')) {
             $destination = 'images/' . $pengguna->avatar;
             if (File::exists($destination)) {

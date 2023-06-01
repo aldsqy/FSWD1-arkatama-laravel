@@ -2,112 +2,151 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
-  <style>
-    .sidebar {
-      height: auto;
-      width: 250px;
-    }
-
-    .sidebar .nav-link {
-      color: #A9A9A9
-    }
-
-    .sidebar .nav-link.white-text {
-      color: #FFFFFF;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 56px;
-      bottom: 0;
-      left: 0;
-      z-index: 1;
-      overflow-x: hidden;
-      padding-top: 20px;
-      background-color: #343a40;
-    }
-
-    .col-10 {
-      margin-left: 250px;
-    }
-
-    .navbar {
-      z-index: 2;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    .col-10 {
-    margin-left: 220px;
-    padding-top: 56px; /* Adjust this value based on the height of your top navbar */
-  }
-    
-  </style>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Aldstore</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top">
-    <a class="navbar-brand" href="{{ url('landingpage') }}">
-      <img src="{{ asset('images/aldstore.png') }}" alt="AdminYve" width="150" style="margin: 12px 32px;">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link text-dark" href="{{ url('landingpage') }}">Kembali ke Landing Page</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a href="{{ url('/landingpage') }}" class="navbar-brand ps-3">
+            <img src="{{ asset('images/aldstore2.png') }}" alt="AdminYve" width="150">
+        </a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+            <i class="fas fa-bars"></i>
+        </button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                    aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('images/' . Auth::user()->avatar) }}" alt="User Image" style="width: 38px; height: 38px; border-radius: 50%;">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="{{ url('logout') }}">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">General</div>
+                        <a class="nav-link {{ request()->url('/dashboard') == url('/dashboard') ? 'active' : '' }}"
+                            href="{{ url('/dashboard') }}">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-tachometer-alt-fast"></i>
+                            </div>
+                            Dashboard
+                        </a>
+                        <a class="nav-link {{ request()->url('/slider') == url('/slider') ? 'active' : '' }}"
+                            href="{{ url('/slider') }}">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-pause"></i>
+                            </div>
+                            Slider
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Produk</div>
+                        <a class="nav-link {{ request()->url('/kategori') == url('/kategori') ? 'active' : '' }}"
+                            href="{{ url('/kategori') }}">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-th-large"></i>
+                            </div>
+                            Kategori
+                        </a>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-2 bg-dark sidebar">
-        <nav class="navbar navbar-dark">
-          <ul class="nav flex-column text-light">
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/dashboard') }}"><i class="bi bi-speedometer"></i>&nbsp;&nbsp;Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/slider') }}"><i class="bi bi-square-half"></i>&nbsp;&nbsp;Slider</a>
-            </li>
-            <li class="nav-item">
-              <span class="nav-link white-text">Produk</span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/kategori') }}"><i class="bi bi-star-fill"></i>&nbsp;&nbsp;Kategori</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/produks') }}"><i class="bi bi-bag-fill"></i>&nbsp;&nbsp;Daftar Produk</a>
-            </li>
-            <li class="nav-item">
-              <span class="nav-link white-text">Pengguna</span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/grup') }}"><i class="bi bi-people-fill"></i>&nbsp;&nbsp;Grup Pengguna</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url('/pengguna') }}"><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Daftar Pengguna</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-10">
-        <div class="container mt-5">
-          @yield('content')
+                        <a class="nav-link {{ request()->url('/produks') == url('/produks') ? 'active' : '' }}"
+                            href="{{ url('/produks') }}">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-list-alt"></i>
+                            </div>
+                            Daftar Produk
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Pengguna</div>
+                        <a class="nav-link {{ request()->url('/grup') == url('/grup') ? 'active' : '' }}"
+                            href="{{ url('/grup') }}">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            Grup Pengguna
+                        </a>
+
+                        <a class="nav-link {{ request()->url('/pengguna') == url('/pengguna') ? 'active' : '' }}"
+                            href="{{ url('/pengguna') }}">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-list-alt"></i>
+                            </div>
+                            Daftar Pengguna
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Lainnya</div>
+                        <a class="nav-link {{ request()->url('/landingpage') == url('/landingpage') ? 'active' : '' }}"
+                            href="{{ url('/landingpage') }}">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            Kembali ke Menu
+                        </a>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Kamu login sebagai : {{ Auth::user()->role }}</div>
+                </div>
+            </nav>
         </div>
-      </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    @yield('content')
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Aldstore 2023</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('assets/js/chart-area-demo.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/datatables-simple-demo.js') }}"></script>
 </body>
 
 </html>
