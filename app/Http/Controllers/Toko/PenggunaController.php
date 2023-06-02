@@ -42,6 +42,13 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'email' => 'required',
+            'nama' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'password' => 'required',
+        ]);
 
         $pengguna = Pengguna::create($request->except(['_token']));
         $pengguna->setAttribute('password', bcrypt($request->password));
@@ -93,6 +100,13 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'email' => 'required',
+            'nama' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'password' => 'required',
+        ]);
 
         $pengguna = Pengguna::find($id);
         $pengguna->update($request->except(['_token', 'submit']));

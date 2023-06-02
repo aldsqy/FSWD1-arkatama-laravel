@@ -37,6 +37,10 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'kategori' => 'required',
+        ]);
+
         Kategori::create($request->except(['_token', 'submit']));
         return redirect('/kategori');
     }
@@ -74,6 +78,10 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'kategori' => 'required',
+        ]);
+
         $kategori = Kategori::find($id);
         $kategori->update($request->except(['_token', 'submit']));
         return redirect('/kategori');

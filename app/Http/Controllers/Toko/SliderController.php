@@ -38,6 +38,11 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama' => 'required',
+            'url' => 'required',
+        ]);
+
         $slider = Slider::create($request->except(['_token']));
 
         if ($request->hasFile('banner')) {
@@ -83,26 +88,31 @@ class SliderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { {
-            $slider = Slider::find($id);
-            $slider->update($request->except(['_token', 'submit']));
+    {
 
-            if ($request->hasFile('banner')) {
-                $destination = 'images/' . $slider->banner;
-                if (File::exists($destination)) {
-                    File::delete($destination);
-                }
-                $file = $request->file('banner');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
-                $file->move('images/', $filename);
-                $slider->banner = $filename;
+        $request->validate([
+            'nama' => 'required',
+            'url' => 'required',
+        ]);
+
+        $slider = Slider::find($id);
+        $slider->update($request->except(['_token', 'submit']));
+
+        if ($request->hasFile('banner')) {
+            $destination = 'images/' . $slider->banner;
+            if (File::exists($destination)) {
+                File::delete($destination);
             }
-
-            $slider->update();
-
-            return redirect('/slider');
+            $file = $request->file('banner');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('images/', $filename);
+            $slider->banner = $filename;
         }
+
+        $slider->update();
+
+        return redirect('/slider');
     }
 
     /**

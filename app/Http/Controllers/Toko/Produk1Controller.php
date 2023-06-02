@@ -37,6 +37,12 @@ class Produk1Controller extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama' => 'required',
+            'deskripsi' => 'required',
+            'harga' => 'required',
+        ]);
+
         Produk::create($request->except(['_token']));
         return redirect('/produks');
     }
@@ -73,6 +79,12 @@ class Produk1Controller extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nama' => 'required',
+            'deskripsi' => 'required',
+            'harga' => 'required',
+        ]);
+
         $produk = Produk::find($id);
         $produk->update($request->except(['_token', 'submit']));
         return redirect('/produks');
