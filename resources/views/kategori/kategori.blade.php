@@ -15,6 +15,7 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Kategori</th>
+                    <th scope="col">Deskripsi</th>
                     @admin
                         <th scope="col">Aksi</th>
                     @endadmin
@@ -23,9 +24,10 @@
             <tbody>
                 @foreach ($kategori as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->kategori }}</td>
-                        <td>
+                        <td class="align-middle">{{ $loop->iteration }}</td>
+                        <td class="align-middle">{{ $item->kategori }}</td>
+                        <td class="align-middle">{{ $item->deskripsi }}</td>
+                        <td class="align-middle">
                             @admin
                                 <div class="d-flex">
                                     <a href="/kategori/{{ $item->id }}/edit" class="btn btn-success  mx-2">Edit</a>

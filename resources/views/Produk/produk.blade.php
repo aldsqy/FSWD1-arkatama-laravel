@@ -26,12 +26,12 @@
             <tbody>
                 @foreach ($produk as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nama }}</td>
-                        <td>{{ $item->deskripsi }}</td>
-                        <td>{{ $item->harga }}</td>
-                        <td>{{ $item->status }}</td>
-                        <td>
+                        <td class="align-middle">{{ $loop->iteration }}</td>
+                        <td class="align-middle">{{ $item->nama }}</td>
+                        <td class="align-middle">{{ $item->deskripsi }}</td>
+                        <td class="align-middle">{{ $item->harga }}</td>
+                        <td class="align-middle">{{ $item->status }}</td>
+                        <td class="align-middle">
                             @admin
                                 <div class="d-flex">
                                     <a href="/produks/{{ $item->id }}/edit" class="btn btn-success  mx-2">Edit</a>

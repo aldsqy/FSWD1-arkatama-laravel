@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('grup', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 100);
-            $table->enum('role', ['admin', 'staff']);
+            $table->enum('role', ['user', 'staff', 'admin']);
             $table->timestamps();
         });
     }

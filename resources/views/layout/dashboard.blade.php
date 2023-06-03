@@ -56,12 +56,12 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">General</div>
-                        <a class="nav-link {{ request()->url('/dashboard') == url('/dashboard') ? 'active' : '' }}"
-                            href="{{ url('/dashboard') }}">
+                        <a class="nav-link {{ request()->url('/testimoni') == url('/testimoni') ? 'active' : '' }}"
+                            href="{{ url('/testimoni') }}">
                             <div class="sb-nav-link-icon">
                                 <i class="fas fa-tachometer-alt-fast"></i>
                             </div>
-                            Dashboard
+                            Testimoni
                         </a>
                         <a class="nav-link {{ request()->url('/slider') == url('/slider') ? 'active' : '' }}"
                             href="{{ url('/slider') }}">

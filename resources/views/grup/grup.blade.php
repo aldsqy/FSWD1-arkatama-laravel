@@ -13,7 +13,6 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nama</th>
                     <th scope="col">Role</th>
                     @admin
                         <th scope="col">Aksi</th>
@@ -23,10 +22,9 @@
             <tbody>
                 @foreach ($grup as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nama }}</td>
-                        <td>{{ $item->role }}</td>
-                        <td>
+                        <td class="align-middle">{{ $loop->iteration }}</td>
+                        <td class="align-middle">{{ $item->role }}</td>
+                        <td class="align-middle">
                             @admin
                             <div class="d-flex">
                                 <a href="/grup/{{ $item->id }}/edit" class="btn btn-success mx-2">Edit</a>

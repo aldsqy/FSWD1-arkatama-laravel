@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Grup extends Model
 {
-    protected $fillable = ['nama', 'role'];
+    protected $fillable = ['role'];
 
     protected $table = 'grup';
 
     protected $casts = [
-        'role' => 'string', // jika Anda ingin mengonversi role ke string
+        'role' => 'string'
     ];
 }

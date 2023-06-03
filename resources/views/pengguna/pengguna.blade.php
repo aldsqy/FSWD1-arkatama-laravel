@@ -30,14 +30,14 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>
-                            <img src="{{ asset('images/' . $item->avatar) }}" style="width: 40px;" alt="Avatar">
+                            <img src="{{ asset('images/' . $item->avatar) }}" style="width: 35px; height: 35px; border-radius: 50%;" alt="Avatar">
                         </td>
-                        <td>{{ $item->email }}</td>
-                        <td>{{ $item->nama }}</td>
-                        <td>{{ $item->role }}</td>
-                        <td>{{ $item->phone }}</td>
-                        <td>{{ $item->address }}</td>
-                        <td>
+                        <td class="align-middle">{{ $item->email }}</td>
+                        <td class="align-middle">{{ $item->nama }}</td>
+                        <td class="align-middle">{{ $item->role }}</td>
+                        <td class="align-middle">{{ $item->phone }}</td>
+                        <td class="align-middle">{{ $item->address }}</td>
+                        <td class="align-middle">
                             @admin
                                 <div class="d-flex">
                                     <a href="/pengguna/{{ $item->id }}/edit" class="btn btn-success  mx-2">Edit</a>

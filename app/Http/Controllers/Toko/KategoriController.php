@@ -39,6 +39,7 @@ class KategoriController extends Controller
     {
         $request->validate([
             'kategori' => 'required',
+            'deskripsi' => 'required',
         ]);
 
         Kategori::create($request->except(['_token', 'submit']));
@@ -80,6 +81,7 @@ class KategoriController extends Controller
     {
         $request->validate([
             'kategori' => 'required',
+            'deskripsi' => 'required',
         ]);
 
         $kategori = Kategori::find($id);

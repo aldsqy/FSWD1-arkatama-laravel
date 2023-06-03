@@ -51,18 +51,18 @@
                     </li>
                     @auth
                         @if (Auth::user()->role == 'admin' || Auth::user()->role == 'staff')
-                            <li><a href="{{ url('dashboard') }}"
-                                    class="nav-link {{ request()->url('dashboard') == url('dashboard') ? 'active' : '' }}">Dashboard</a>
+                            <li><a href="{{ url('testimoni') }}"
+                                    class="nav-link {{ request()->url('testimoni') == url('testimoni') ? 'active' : '' }}">Dashboard</a>
                             </li>
                         @endif
                     @endauth
                     @auth
                         <li><a href="{{ url('logout') }}"
-                                class="nav-link {{ request()->url('logout') == url('logout') ? 'active' : '' }}">Logout</a>
+                                class="nav-link text-warning {{ request()->url('logout') == url('logout') ? 'active' : '' }}">Logout</a>
                         </li>
                     @else
                         <li><a href="{{ url('login') }}"
-                                class="nav-link {{ request()->url('login') == url('login') ? 'active' : '' }}">Login</a>
+                                class="nav-link text-warning {{ request()->url('login') == url('login') ? 'active' : '' }}">Login</a>
                         </li>
                     @endauth
                 </ul>

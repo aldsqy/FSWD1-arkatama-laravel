@@ -11,10 +11,22 @@
         @csrf
         <div class="form-group row">
             <label for="kategori" class="col-sm-2 col-form-label mb-3">Kategori:</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10 mb-3">
                 <input type="text" name="kategori" class="form-control @error('kategori') is-invalid @enderror"
                     placeholder="Enter kategori" value="{{ old('kategori', $kategori->kategori) }}">
                 @error('kategori')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="deskripsi" class="col-sm-2 col-form-label mb-3">Deskripsi:</label>
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"
+                    placeholder="Enter deskripsi" value="{{ old('deskripsi', $produk->deskripsi) }}">
+                @error('deskripsi')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>

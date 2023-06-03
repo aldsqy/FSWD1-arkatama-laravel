@@ -32,7 +32,7 @@
                         <td class="align-middle">{{ $item->url }}</td>
                         <td class="align-middle">
                             @admin
-                                <div class="d-flex justify-content-center">
+                                <div class="d-flex">
                                     <a href="/slider/{{ $item->id }}/edit" class="btn btn-success  mx-2">Edit</a>
                                     <form action="/slider/{{ $item->id }}" method="POST" class="ml-2">
                                         @csrf

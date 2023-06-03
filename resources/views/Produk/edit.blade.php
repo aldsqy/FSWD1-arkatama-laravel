@@ -11,8 +11,8 @@
         @csrf
         <div class="form-group row">
             <label for="nama" class="col-sm-2 col-form-label mb-3">Nama:</label>
-            <div class="col-sm-10">
-                <input type="text" name="nama" class="form-control mb-3 @error('nama') is-invalid @enderror"
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
                     placeholder="Enter category" value="{{ old('nama', $produk->nama) }}">
                 @error('nama')
                     <div class="invalid-feedback">
@@ -23,8 +23,8 @@
         </div>
         <div class="form-group row">
             <label for="deskripsi" class="col-sm-2 col-form-label mb-3">Deskripsi:</label>
-            <div class="col-sm-10">
-                <input type="text" name="deskripsi" class="form-control mb-3 @error('deskripsi') is-invalid @enderror"
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"
                     placeholder="Enter deskripsi" value="{{ old('deskripsi', $produk->deskripsi) }}">
                 @error('deskripsi')
                     <div class="invalid-feedback">
@@ -35,8 +35,8 @@
         </div>
         <div class="form-group row">
             <label for="harga" class="col-sm-2 col-form-label mb-3">Harga:</label>
-            <div class="col-sm-10">
-                <input type="text" name="harga" class="form-control mb-3 @error('harga') is-invalid @enderror"
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="harga" class="form-control @error('harga') is-invalid @enderror"
                     placeholder="Enter harga" value="{{ old('harga', $produk->harga) }}">
                 @error('harga')
                     <div class="invalid-feedback">

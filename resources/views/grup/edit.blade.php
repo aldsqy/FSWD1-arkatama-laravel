@@ -10,18 +10,6 @@
         @method('put')
         @csrf
         <div class="form-group row">
-            <label for="nama" class="col-sm-2 col-form-label mb-3">Nama:</label>
-            <div class="col-sm-10">
-                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
-                    placeholder="Enter nama" value="{{ old('nama', $grup->nama) }}">
-                @error('nama')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
             <label for="role" class="col-sm-2 col-form-label mb-3">Pilih role:</label>
             <div class="col-sm-10">
                 <select name="role" class="form-control" required>

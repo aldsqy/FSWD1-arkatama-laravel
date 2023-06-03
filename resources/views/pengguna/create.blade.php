@@ -16,8 +16,8 @@
         </div>
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label mb-3">Email:</label>
-            <div class="col-sm-10">
-                <input type="text" name="email" class="form-control mb-3 @error('email') is-invalid @enderror"
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
                     value="{{ old('email') }}" placeholder="Enter email">
                 @error('email')
                     <div class="invalid-feedback">
@@ -28,8 +28,8 @@
         </div>
         <div class="form-group row">
             <label for="nama" class="col-sm-2 col-form-label mb-3">Nama:</label>
-            <div class="col-sm-10">
-                <input type="text" name="nama" class="form-control mb-3 @error('nama') is-invalid @enderror"
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
                     value="{{ old('nama') }}" placeholder="Enter nama">
                 @error('nama')
                     <div class="invalid-feedback">
@@ -50,8 +50,8 @@
         </div>
         <div class="form-group row">
             <label for="phone" class="col-sm-2 col-form-label mb-3">Phone:</label>
-            <div class="col-sm-10">
-                <input type="text" name="phone" class="form-control mb-3 @error('phone') is-invalid @enderror"
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror"
                     value="{{ old('phone') }}" placeholder="Enter phone">
                 @error('phone')
                     <div class="invalid-feedback">
@@ -62,8 +62,8 @@
         </div>
         <div class="form-group row">
             <label for="address" class="col-sm-2 col-form-label mb-3">Address:</label>
-            <div class="col-sm-10">
-                <input type="text" name="address" class="form-control mb-3 @error('address') is-invalid @enderror"
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="address" class="form-control @error('address') is-invalid @enderror"
                     value="{{ old('address') }}" placeholder="Enter address">
                 @error('address')
                     <div class="invalid-feedback">
@@ -74,8 +74,8 @@
         </div>
         <div class="form-group row">
             <label for="password" class="col-sm-2 col-form-label mb-3">Password:</label>
-            <div class="col-sm-10">
-                <input type="password" name="password" class="form-control mb-3 @error('password') is-invalid @enderror"
+            <div class="col-sm-10 mb-3">
+                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                     value="{{ old('password') }}" placeholder="Enter password">
                 @error('password')
                     <div class="invalid-feedback">

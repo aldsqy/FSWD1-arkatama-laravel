@@ -16,7 +16,7 @@
         </div>
         <div class="form-group row">
             <label for="nama" class="col-sm-2 col-form-label mb-3">Nama:</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10 mb-3">
                 <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
                     value="{{ old('nama') }}" placeholder="Enter nama">
                 @error('nama')
@@ -28,7 +28,7 @@
         </div>
         <div class="form-group row">
             <label for="url" class="col-sm-2 col-form-label mb-3">URL:</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10 mb-3">
                 <input type="url" name="url" class="form-control @error('url') is-invalid @enderror"
                     value="{{ old('url') }}" placeholder="Enter URL">
                 @error('url')

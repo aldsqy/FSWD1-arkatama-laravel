@@ -12,7 +12,7 @@
             <div class="form-group row">
                 <label for="current_avatar" class="col-sm-2 col-form-label mb-3">Current Avatar:</label>
                 <div class="col-sm-10">
-                    <img src="{{ asset('images/' . $pengguna->avatar) }}" style="width: 40px;">
+                    <img src="{{ asset('images/' . $pengguna->avatar) }}" style="width: 35px; height: 35px; border-radius: 50%;" alt="Avatar">
                 </div>
             </div>
         @endif
@@ -24,9 +24,9 @@
         </div>
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label mb-3">Email:</label>
-            <div class="col-sm-10">
-                <input type="text" name="email" class="form-control mb-3 @error('nama') is-invalid @enderror"
-                    placeholder="Enter email" value="{{ old('nama', $pengguna->email) }}">
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
+                    placeholder="Enter email" value="{{ old('email', $pengguna->email) }}">
                 @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -36,8 +36,8 @@
         </div>
         <div class="form-group row">
             <label for="nama" class="col-sm-2 col-form-label mb-3">Nama:</label>
-            <div class="col-sm-10">
-                <input type="text" name="nama" class="form-control mb-3 @error('nama') is-invalid @enderror"
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
                     placeholder="Enter nama" value="{{ old('nama', $pengguna->nama) }}">
                     @error('nama')
                     <div class="invalid-feedback">
@@ -58,9 +58,9 @@
         </div>
         <div class="form-group row">
             <label for="phone" class="col-sm-2 col-form-label mb-3">Phone:</label>
-            <div class="col-sm-10">
-                <input type="text" name="phone" class="form-control mb-3 @error('nama') is-invalid @enderror"
-                    placeholder="Enter phone" value="{{ old('nama', $pengguna->phone) }}">
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror"
+                    placeholder="Enter phone" value="{{ old('phone', $pengguna->phone) }}">
                     @error('phone')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -70,9 +70,9 @@
         </div>
         <div class="form-group row">
             <label for="address" class="col-sm-2 col-form-label mb-3">Address:</label>
-            <div class="col-sm-10">
-                <input type="text" name="address" class="form-control mb-3 @error('nama') is-invalid @enderror"
-                    placeholder="Enter address" value="{{ old('nama', $pengguna->address) }}">
+            <div class="col-sm-10 mb-3">
+                <input type="text" name="address" class="form-control @error('address') is-invalid @enderror"
+                    placeholder="Enter address" value="{{ old('address', $pengguna->address) }}">
                     @error('address')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -82,9 +82,9 @@
         </div>
         <div class="form-group row">
             <label for="password" class="col-sm-2 col-form-label mb-3">Password:</label>
-            <div class="col-sm-10">
-                <input type="password" name="password" class="form-control mb-3 @error('nama') is-invalid @enderror"
-                    placeholder="Enter password" value="{{ old('nama', $pengguna->password) }}">
+            <div class="col-sm-10 mb-3">
+                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
+                    placeholder="Enter password" value="{{ old('password', $pengguna->password) }}">
                     @error('password')
                     <div class="invalid-feedback">
                         {{ $message }}

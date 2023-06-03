@@ -10,9 +10,9 @@
         @csrf
         <div class="form-group row">
             <label for="nama" class="col-sm-2 col-form-label mb-3">Nama:</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10 mb-3">
                 <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
-                    value="{{ old('nama') }}" placeholder="Enter produk">\
+                    value="{{ old('nama') }}" placeholder="Enter produk">
                 @error('nama')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -22,7 +22,7 @@
         </div>
         <div class="form-group row">
             <label for="deskripsi" class="col-sm-2 col-form-label mb-3">Deskripsi:</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10 mb-3">
                 <input type="text" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"
                     value="{{ old('deskripsi') }}" placeholder="Enter deskripsi">
                 @error('deskripsi')
@@ -34,7 +34,7 @@
         </div>
         <div class="form-group row">
             <label for="harga" class="col-sm-2 col-form-label mb-3">Harga:</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10 mb-3">
                 <input type="text" name="harga" class="form-control @error('harga') is-invalid @enderror"
                     value="{{ old('harga') }}" placeholder="Enter harga">
                 @error('harga')

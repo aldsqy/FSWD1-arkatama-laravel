@@ -38,7 +38,6 @@ class GrupController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
             'role' => 'required',
         ]);
 
@@ -79,7 +78,6 @@ class GrupController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
             'role' => 'required',
         ]);
 

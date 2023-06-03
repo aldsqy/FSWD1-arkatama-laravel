@@ -62,9 +62,17 @@ Route::get('grup/{id}/edit', [GrupController::class, 'edit'])->middleware(['admi
 Route::put('grup/{id}', [GrupController::class, 'update'])->middleware(['admin']);
 Route::delete('grup/{id}', [GrupController::class, 'destroy'])->middleware(['admin']);
 
+//Testimoni
+use App\Http\Controllers\Toko\TestimoniController;
+Route::get('testimoni', [TestimoniController::class, 'index'])->middleware(['auth','admin-staff']);
+Route::get('testimoni/create', [TestimoniController::class, 'create'])->middleware(['admin']);
+Route::post('testimoni/store', [TestimoniController::class, 'store'])->name('testimoni.store')->middleware(['admin']);
+Route::get('testimoni/{id}/edit', [TestimoniController::class, 'edit'])->middleware(['admin']);
+Route::put('testimoni/{id}', [TestimoniController::class, 'update'])->middleware(['admin']);
+Route::delete('testimoni/{id}', [TestimoniController::class, 'destroy'])->middleware(['admin']);
+
 //Dashboard
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['auth','admin-staff']);
-// });
 
 //Test
 Route::get('/test', [ProdukController::class, 'index']);
