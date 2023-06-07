@@ -25,7 +25,7 @@
             <label for="deskripsi" class="col-sm-2 col-form-label mb-3">Deskripsi:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"
-                    placeholder="Enter deskripsi" value="{{ old('deskripsi', $produk->deskripsi) }}">
+                    placeholder="Enter deskripsi" value="{{ old('deskripsi', $kategori->deskripsi) }}">
                 @error('deskripsi')
                     <div class="invalid-feedback">
                         {{ $message }}

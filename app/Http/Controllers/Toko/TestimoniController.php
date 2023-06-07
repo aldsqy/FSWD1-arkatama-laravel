@@ -42,6 +42,7 @@ class TestimoniController extends Controller
             'nama' => 'required',
             'jabatan' => 'required',
             'deskripsi' => 'required',
+            'rating' => 'required|integer|min:1|max:5',
         ]);
 
         $testimoni = Testimoni::create($request->except(['_token']));
@@ -54,7 +55,7 @@ class TestimoniController extends Controller
         }
         $testimoni->save();
 
-        return redirect('/testimoni');
+        return redirect('/testimoni')->with('success', 'Kamu Telah Berhasil Menambahkan Data');
     }
 
     /**
@@ -93,6 +94,7 @@ class TestimoniController extends Controller
             'nama' => 'required',
             'jabatan' => 'required',
             'deskripsi' => 'required',
+            'rating' => 'required|integer|min:1|max:5',
         ]);
 
         $testimoni = Testimoni::find($id);
@@ -111,7 +113,7 @@ class TestimoniController extends Controller
 
         $testimoni->update();
 
-        return redirect('/testimoni');
+        return redirect('/testimoni')->with('success2', 'Kamu Telah Berhasil Memperbarui Data');
     }
 
     /**

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Toko;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Produk;
-use App\Models\Kategori;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 class Produk1Controller extends Controller
 {
@@ -18,7 +18,11 @@ class Produk1Controller extends Controller
     public function index()
     {
         $produk = Produk::all();
-        return view('produk.produk',compact('produk'));
+        return response()->json([
+            'status' => 200,
+            'message' => 'Data berhasil masuk',
+            'data' => $produk,
+        ]);
     }
 
     /**
@@ -28,8 +32,7 @@ class Produk1Controller extends Controller
      */
     public function create()
     {
-        $kategori = Kategori::all();
-        return view('produk.create', compact('kategori'));
+        //
     }
 
     /**
@@ -46,8 +49,13 @@ class Produk1Controller extends Controller
             'harga' => 'required',
         ]);
 
-        Produk::create($request->except(['_token']));
-        return redirect('/produks')->with('success', 'Kamu Telah Berhasil Menambahkan Data');
+        $produk = Produk::create($request->except(['_token']));
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Data berhasil disimpan',
+            'data' => $produk,
+        ]);
     }
 
     /**
@@ -69,9 +77,7 @@ class Produk1Controller extends Controller
      */
     public function edit($id)
     {
-        $kategori = Kategori::all();
-        $produk = Produk::find($id);
-        return view('produk.edit', compact('produk', 'kategori'));
+        //
     }
 
     /**
@@ -89,9 +95,13 @@ class Produk1Controller extends Controller
             'harga' => 'required',
         ]);
 
-        $produk = Produk::find($id);
+        $produk = Produk::findOrFail($id);
         $produk->update($request->except(['_token', 'submit']));
-        return redirect('/produks')->with('success2', 'Kamu Telah Berhasil Memperbarui Data');
+        return response()->json([
+            'status' => 200,
+            'message' => 'Data berhasil diedit',
+            'data' => $produk,
+        ]);
     }
 
     /**
@@ -104,6 +114,10 @@ class Produk1Controller extends Controller
     {
         $produk = Produk::findOrFail($id);
         $produk->delete();
-        return redirect('/produks');
+        return response()->json([
+            'status' => 200,
+            'message' => 'Data berhasil dihapus',
+            'data' => $produk,
+        ]);
     }
 }

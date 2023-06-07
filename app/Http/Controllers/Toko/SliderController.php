@@ -39,6 +39,7 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'banner' => 'required',
             'nama' => 'required',
             'url' => 'required',
         ]);
@@ -54,7 +55,7 @@ class SliderController extends Controller
         }
         $slider->save();
 
-        return redirect('/slider');
+        return redirect('/slider')->with('success', 'Kamu Telah Berhasil Menambahkan Data');
     }
 
     /**
@@ -112,7 +113,7 @@ class SliderController extends Controller
 
         $slider->update();
 
-        return redirect('/slider');
+        return redirect('/slider')->with('success2', 'Kamu Telah Berhasil Memperbarui Data');
     }
 
     /**

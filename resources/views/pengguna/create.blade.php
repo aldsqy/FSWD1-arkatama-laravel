@@ -10,8 +10,13 @@
         @csrf
         <div class="form-group row">
             <label for="avatar" class="col-sm-2 col-form-label mb-3">Avatar:</label>
-            <div class="col-sm-10">
-                <input type="file" name="avatar" class="form-control-file mb-3">
+            <div class="col-sm-10 mb-3">
+                <input type="file" name="avatar" class="form-control-file @error('email') is-invalid @enderror" value="{{ old('avatar') }}">
+                @error('avatar')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
         </div>
         <div class="form-group row">

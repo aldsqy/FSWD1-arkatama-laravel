@@ -12,6 +12,7 @@
     <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
+
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
@@ -37,7 +38,8 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('images/' . Auth::user()->avatar) }}" alt="User Image" style="width: 38px; height: 38px; border-radius: 50%;">
+                    <img src="{{ asset('images/' . Auth::user()->avatar) }}" alt="User Image"
+                        style="width: 38px; height: 38px; border-radius: 50%;">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
@@ -45,7 +47,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="{{ url('logout') }}">Logout</a></li>
+                    <li><a class="dropdown-item" id="logout" href="#">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -59,7 +61,7 @@
                         <a class="nav-link {{ request()->url('/testimoni') == url('/testimoni') ? 'active' : '' }}"
                             href="{{ url('/testimoni') }}">
                             <div class="sb-nav-link-icon">
-                                <i class="fas fa-tachometer-alt-fast"></i>
+                                <i class="fas fa-star"></i>
                             </div>
                             Testimoni
                         </a>
@@ -82,7 +84,7 @@
                         <a class="nav-link {{ request()->url('/produks') == url('/produks') ? 'active' : '' }}"
                             href="{{ url('/produks') }}">
                             <div class="sb-nav-link-icon">
-                                <i class="fas fa-list-alt"></i>
+                                <i class="fas fa-list"></i>
                             </div>
                             Daftar Produk
                         </a>
@@ -98,7 +100,7 @@
                         <a class="nav-link {{ request()->url('/pengguna') == url('/pengguna') ? 'active' : '' }}"
                             href="{{ url('/pengguna') }}">
                             <div class="sb-nav-link-icon">
-                                <i class="fas fa-list-alt"></i>
+                                <i class="fas fa-list"></i>
                             </div>
                             Daftar Pengguna
                         </a>
@@ -146,6 +148,29 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
     <script src="{{ asset('assets/js/datatables-simple-demo.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
+
+    <script>
+        $('#logout').click(function(event) {
+            event.preventDefault(); // Menghentikan aksi default dari tautan
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You will be logged out.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, logout!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect ke URL logout setelah dikonfirmasi
+                    window.location.href = "{{ url('logout') }}";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -43,6 +43,7 @@ class PenggunaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'avatar' => 'required',
             'email' => 'required',
             'nama' => 'required',
             'phone' => 'required',
@@ -61,7 +62,7 @@ class PenggunaController extends Controller
         }
         $pengguna->save();
 
-        return redirect('/pengguna');
+        return redirect('/pengguna')->with('success', 'Kamu Telah Berhasil Menambahkan Data');
 
     }
 
@@ -125,7 +126,7 @@ class PenggunaController extends Controller
 
         $pengguna->update();
 
-        return redirect('/pengguna');
+        return redirect('/pengguna')->with('success2', 'Kamu Telah Berhasil Memperbarui Data');
 
     }
 

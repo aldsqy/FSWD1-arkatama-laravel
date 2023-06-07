@@ -39,6 +39,22 @@
             </div>
         </div>
         <div class="form-group row">
+            <label for="rating" class="col-sm-2 col-form-label mb-3">Rating:</label>
+            <div class="col-sm-10 mb-3">
+                <select name="rating" class="form-control @error('rating') is-invalid @enderror">
+                    <option value="">Select rating</option>
+                    @for ($i = 1; $i <= 5; $i++)
+                        <option value="{{ $i }}" {{ old('rating') == $i ? 'selected' : '' }}>{{ $i }}</option>
+                    @endfor
+                </select>
+                @error('rating')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="deskripsi" class="col-sm-2 col-form-label mb-3">Deskripsi:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"

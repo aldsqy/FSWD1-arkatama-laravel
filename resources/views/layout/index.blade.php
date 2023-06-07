@@ -2,28 +2,28 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Aldstore</title>
+    <title>Aldstore</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
 </head>
 
@@ -57,8 +57,8 @@
                         @endif
                     @endauth
                     @auth
-                        <li><a href="{{ url('logout') }}"
-                                class="nav-link text-warning {{ request()->url('logout') == url('logout') ? 'active' : '' }}">Logout</a>
+                        <li>
+                            <a href="#" id="logout" class="nav-link text-warning">Logout</a>
                         </li>
                     @else
                         <li><a href="{{ url('login') }}"
@@ -184,7 +184,29 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
 
+    <script>
+        $('#logout').click(function(event) {
+            event.preventDefault(); // Menghentikan aksi default dari tautan
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You will be logged out.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, logout!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect ke URL logout setelah dikonfirmasi
+                    window.location.href = "{{ url('logout') }}";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

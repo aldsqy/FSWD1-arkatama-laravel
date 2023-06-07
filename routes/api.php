@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Produk1Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('produks', [Produk1Controller::class, 'index']);
+Route::post('produks/store', [Produk1Controller::class, 'store'])->name('produk.store');
+Route::put('produks/{id}', [Produk1Controller::class, 'update']);
+// Route::apiResource('produks', Produk1Controller::class);
+Route::delete('produks/{id}', [Produk1Controller::class, 'destroy']);

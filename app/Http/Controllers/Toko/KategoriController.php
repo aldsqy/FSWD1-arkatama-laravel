@@ -43,7 +43,7 @@ class KategoriController extends Controller
         ]);
 
         Kategori::create($request->except(['_token', 'submit']));
-        return redirect('/kategori');
+        return redirect('/kategori')->with('success', 'Kamu Telah Berhasil Menambahkan Data');
     }
 
     /**
@@ -86,7 +86,7 @@ class KategoriController extends Controller
 
         $kategori = Kategori::find($id);
         $kategori->update($request->except(['_token', 'submit']));
-        return redirect('/kategori');
+        return redirect('/kategori')->with('success2', 'Kamu Telah Berhasil Memperbarui Data');
     }
 
     /**

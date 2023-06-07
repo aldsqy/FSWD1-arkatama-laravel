@@ -42,7 +42,7 @@ class GrupController extends Controller
         ]);
 
         Grup::create($request->except(['_token']));
-        return redirect('/grup');
+        return redirect('/grup')->with('success', 'Kamu Telah Berhasil Menambahkan Data');
     }
 
     /**
@@ -83,7 +83,7 @@ class GrupController extends Controller
 
         $grup = Grup::find($id);
         $grup->update($request->except(['_token', 'submit']));
-        return redirect('/grup');
+        return redirect('/grup')->with('success2', 'Kamu Telah Berhasil Memperbarui Data');
     }
 
     /**

@@ -22,6 +22,16 @@
             </div>
         </div>
         <div class="form-group row">
+            <label for="kategori_id" class="col-sm-2 col-form-label mb-3">Pilih kategori:</label>
+            <div class="col-sm-10">
+                <select name="kategori_id" class="form-control" required>
+                    @foreach ($kategori as $item)
+                        <option value="{{ $item->id }}" {{ $item->id === $produk->kategori_id ? 'selected' : '' }}>{{ $item->kategori }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="deskripsi" class="col-sm-2 col-form-label mb-3">Deskripsi:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"

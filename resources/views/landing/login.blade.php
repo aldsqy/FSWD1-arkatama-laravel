@@ -50,7 +50,6 @@
         <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
           class="bi bi-arrow-up-short"></i></a>
 
-
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       @if ($message = Session::get('error'))
         <script>

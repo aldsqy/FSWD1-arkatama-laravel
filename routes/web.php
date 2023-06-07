@@ -33,7 +33,7 @@ Route::delete('kategori/{id}', [KategoriController::class, 'destroy'])->middlewa
 //Produk
 Route::get('produks', [Produk1Controller::class, 'index'])->middleware(['auth','admin-staff']);
 Route::get('produks/create', [Produk1Controller::class, 'create'])->middleware(['admin']);
-Route::post('produks/store', [Produk1Controller::class, 'store'])->name('produk.store');
+Route::post('produks/store', [Produk1Controller::class, 'store'])->name('produk.store')->middleware(['admin']);
 Route::get('produks/{id}/edit', [Produk1Controller::class, 'edit'])->middleware(['admin']);
 Route::put('produks/{id}', [Produk1Controller::class, 'update'])->middleware(['admin']);
 Route::delete('produks/{id}', [Produk1Controller::class, 'destroy'])->middleware(['admin']);

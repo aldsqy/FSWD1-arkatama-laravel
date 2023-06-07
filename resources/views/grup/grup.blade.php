@@ -26,14 +26,14 @@
                         <td class="align-middle">{{ $item->role }}</td>
                         <td class="align-middle">
                             @admin
-                            <div class="d-flex">
-                                <a href="/grup/{{ $item->id }}/edit" class="btn btn-success mx-2">Edit</a>
-                                <form action="/grup/{{ $item->id }}" method="POST" class="ml-2">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </div>
+                                <div class="d-flex">
+                                    <a href="/grup/{{ $item->id }}/edit" class="btn btn-success mx-2">Edit</a>
+                                    <form action="/grup/{{ $item->id }}" method="POST" class="ml-2">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger delete">Delete</button>
+                                    </form>
+                                </div>
                             @endadmin
                         </td>
                     </tr>
@@ -41,4 +41,45 @@
             </tbody>
         </table>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
+    @if ($message = Session::get('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Selamat...',
+                text: '{{ $message }}',
+            });
+        </script>
+    @endif
+
+    @if ($message = Session::get('success2'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Selamat...',
+                text: '{{ $message }}',
+            });
+        </script>
+    @endif
+    <script>
+        $('.delete').click(function(event) {
+            var kategoriid = $(this).attr('data-id')
+            event.preventDefault(); // Menghentikan aksi default form submit
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.target.closest('form').submit();
+                }
+            });
+        });
+    </script>
 @endsection
