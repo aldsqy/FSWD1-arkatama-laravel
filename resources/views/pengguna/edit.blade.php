@@ -19,14 +19,14 @@
         <div class="form-group row">
             <label for="avatar" class="col-sm-2 col-form-label mb-3">Avatar:</label>
             <div class="col-sm-10">
-                <input type="file" name="avatar" class="form-control-file mb-3">
+                <input type="file" name="avatar" class="form-control mb-3">
             </div>
         </div>
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label mb-3">Email:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
-                    placeholder="Enter email" value="{{ old('email', $pengguna->email) }}">
+                    placeholder="Ketikkan email..." value="{{ old('email', $pengguna->email) }}">
                 @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -38,7 +38,7 @@
             <label for="nama" class="col-sm-2 col-form-label mb-3">Nama:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
-                    placeholder="Enter nama" value="{{ old('nama', $pengguna->nama) }}">
+                    placeholder="Ketikkan nama..." value="{{ old('nama', $pengguna->nama) }}">
                     @error('nama')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -60,7 +60,7 @@
             <label for="phone" class="col-sm-2 col-form-label mb-3">Phone:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror"
-                    placeholder="Enter phone" value="{{ old('phone', $pengguna->phone) }}">
+                    placeholder="Ketikkan no hp..." value="{{ old('phone', $pengguna->phone) }}">
                     @error('phone')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -72,7 +72,7 @@
             <label for="address" class="col-sm-2 col-form-label mb-3">Address:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="address" class="form-control @error('address') is-invalid @enderror"
-                    placeholder="Enter address" value="{{ old('address', $pengguna->address) }}">
+                    placeholder="Ketikkan alamat..." value="{{ old('address', $pengguna->address) }}">
                     @error('address')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -84,7 +84,7 @@
             <label for="password" class="col-sm-2 col-form-label mb-3">Password:</label>
             <div class="col-sm-10 mb-3">
                 <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
-                    placeholder="Enter password" value="{{ old('password', $pengguna->password) }}">
+                    placeholder="Ketikkan password..." value="{{ old('password', $pengguna->password) }}">
                     @error('password')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -95,6 +95,7 @@
         <div class="form-group row">
             <div class="col-sm-10 offset-sm-2">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ url('/pengguna') }}" class="btn btn-danger">Batal</a>
             </div>
         </div>
     </form>

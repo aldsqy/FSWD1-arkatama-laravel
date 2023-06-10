@@ -20,14 +20,14 @@
         <div class="form-group row">
             <label for="banner" class="col-sm-2 col-form-label mb-3">Banner:</label>
             <div class="col-sm-10">
-                <input type="file" name="banner" class="form-control-file mb-3" placeholder="Upload banner">
+                <input type="file" name="banner" class="form-control mb-3" placeholder="Upload banner">
             </div>
         </div>
         <div class="form-group row">
             <label for="nama" class="col-sm-2 col-form-label mb-3">Nama:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
-                    placeholder="Enter nama" value="{{ old('nama', $slider->nama) }}">
+                    placeholder="Ketikkan nama banner..." value="{{ old('nama', $slider->nama) }}">
                 @error('nama')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -39,7 +39,7 @@
             <label for="URL" class="col-sm-2 col-form-label mb-3">URL:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="url" class="form-control @error('url') is-invalid @enderror"
-                    placeholder="Enter URL" value="{{ old('url', $slider->url) }}">
+                    placeholder="Ketikkan link URL..." value="{{ old('url', $slider->url) }}">
                 @error('url')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -50,6 +50,7 @@
         <div class="form-group row">
             <div class="col-sm-10 offset-sm-2">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ url('/slider') }}" class="btn btn-danger">Batal</a>
             </div>
         </div>
     </form>

@@ -43,7 +43,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('landingpage');
+            return redirect()->intended('/');
         }
 
         return back()->with('error', 'Maaf, Kamu Gagal Login');

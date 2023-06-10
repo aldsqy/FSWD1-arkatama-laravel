@@ -18,7 +18,7 @@ class Produk1Controller extends Controller
     public function index()
     {
         $produk = Produk::all();
-        return view('produk.produk',compact('produk'));
+        return view('produk.produk', compact('produk'));
     }
 
     /**
@@ -41,12 +41,30 @@ class Produk1Controller extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama' => 'required|min:4',
             'deskripsi' => 'required',
-            'harga' => 'required',
+            'harga' => 'required|numeric',
+            'kategori_id' => 'required|exists:kategori,id',
+        ], [
+            'nama.required' => 'Nama tidak boleh kosong',
+            'nama.min' => 'Nama harus terdiri dari minimal :min karakter',
+            'deskripsi.required' => 'Deskripsi tidak boleh kosong',
+            'harga.required' => 'Harga tidak boleh kosong',
+            'harga.numeric' => 'Harga harus berupa angka',
+            'kategori_id.required' => 'Kategori ID tidak boleh kosong',
+            'kategori_id.exists' => 'Kategori ID tidak valid',
         ]);
 
-        Produk::create($request->except(['_token']));
+        $produk = Produk::create($request->except(['_token']));
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('images/', $filename);
+            $produk->gambar = $filename;
+        }
+        $produk->save();
+
         return redirect('/produks')->with('success', 'Kamu Telah Berhasil Menambahkan Data');
     }
 
@@ -58,7 +76,8 @@ class Produk1Controller extends Controller
      */
     public function show($id)
     {
-        //
+        $produk = Produk::find($id);
+        return view('landing.project-details', ['produk' => $produk]);
     }
 
     /**
@@ -84,13 +103,31 @@ class Produk1Controller extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama' => 'required|min:4',
             'deskripsi' => 'required',
-            'harga' => 'required',
+            'harga' => 'required|numeric',
+            'kategori_id' => 'required|exists:kategori,id',
+        ], [
+            'nama.required' => 'Nama tidak boleh kosong',
+            'nama.min' => 'Nama harus terdiri dari minimal :min karakter',
+            'deskripsi.required' => 'Deskripsi tidak boleh kosong',
+            'harga.required' => 'Harga tidak boleh kosong',
+            'harga.numeric' => 'Harga harus berupa angka',
+            'kategori_id.required' => 'Kategori ID tidak boleh kosong',
+            'kategori_id.exists' => 'Kategori ID tidak valid',
         ]);
 
         $produk = Produk::find($id);
         $produk->update($request->except(['_token', 'submit']));
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('images/', $filename);
+            $produk->gambar = $filename;
+        }
+        $produk->update();
+
         return redirect('/produks')->with('success2', 'Kamu Telah Berhasil Memperbarui Data');
     }
 

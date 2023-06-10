@@ -2,20 +2,21 @@
 
 @section('content')
 
-    <h1 class="mt-4">Dashboard</h1>
+    <h1 class="mt-4">Daftar Kategori</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Dashboard</li>
+        <li class="breadcrumb-item active">Lihat seluruh daftar kategori</li>
     </ol>
     @admin
-        <a href="{{ url('kategori/create') }}" class="btn btn-primary mb-3">Tambah</a>
+        <a href="{{ url('kategori/create') }}" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"
+                style="margin-right: 8px;"></i>Tambah</a>
     @endadmin
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Deskripsi</th>
+                    <th scope="col" data-sort="text">No</th>
+                    <th scope="col" data-sort="text">Kategori</th>
+                    <th scope="col" data-sort="text">Deskripsi</th>
                     @admin
                         <th scope="col">Aksi</th>
                     @endadmin
@@ -30,11 +31,13 @@
                         <td class="align-middle">
                             @admin
                                 <div class="d-flex">
-                                    <a href="/kategori/{{ $item->id }}/edit" class="btn btn-success  mx-2">Edit</a>
+                                    <a href="/kategori/{{ $item->id }}/edit" class="btn btn-success  mx-2"><i
+                                            class="fa-solid fa-pen"></i></a>
                                     <form action="/kategori/{{ $item->id }}" method="POST" class="ml-2">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" class="btn btn-danger delete">Delete</button>
+                                        <button type="submit" class="btn btn-danger delete"><i
+                                                class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </div>
                             @endadmin
@@ -45,7 +48,8 @@
         </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.js"
+        integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
     @if ($message = Session::get('success'))
         <script>
             Swal.fire({

@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('produk', function (Blueprint $table) {
             $table->id();
+            $table->string('gambar', 100);
             $table->foreignId('kategori_id')->constrained('kategori');
             $table->string('nama', 100);
-            $table->string('deskripsi', 100);
+            $table->text('deskripsi');
             $table->integer('harga');
             $table->enum('status', ['accepted', 'rejected', 'waiting']);
             $table->timestamps();

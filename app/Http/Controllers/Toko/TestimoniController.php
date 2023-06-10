@@ -39,10 +39,19 @@ class TestimoniController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama' => 'required|min:4',
             'jabatan' => 'required',
             'deskripsi' => 'required',
             'rating' => 'required|integer|min:1|max:5',
+        ], [
+            'nama.required' => 'Nama tidak boleh kosong',
+            'nama.min' => 'Nama minimal harus terdiri dari :min karakter',
+            'jabatan.required' => 'Jabatan tidak boleh kosong',
+            'deskripsi.required' => 'Deskripsi tidak boleh kosong',
+            'rating.required' => 'Rating tidak boleh kosong',
+            'rating.integer' => 'Rating harus berupa angka',
+            'rating.min' => 'Rating minimal harus :min',
+            'rating.max' => 'Rating maksimal harus :max',
         ]);
 
         $testimoni = Testimoni::create($request->except(['_token']));
@@ -91,10 +100,19 @@ class TestimoniController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama' => 'required|min:4',
             'jabatan' => 'required',
             'deskripsi' => 'required',
             'rating' => 'required|integer|min:1|max:5',
+        ], [
+            'nama.required' => 'Nama tidak boleh kosong',
+            'nama.min' => 'Nama minimal harus terdiri dari :min karakter',
+            'jabatan.required' => 'Jabatan tidak boleh kosong',
+            'deskripsi.required' => 'Deskripsi tidak boleh kosong',
+            'rating.required' => 'Rating tidak boleh kosong',
+            'rating.integer' => 'Rating harus berupa angka',
+            'rating.min' => 'Rating minimal harus :min',
+            'rating.max' => 'Rating maksimal harus :max',
         ]);
 
         $testimoni = Testimoni::find($id);

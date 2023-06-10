@@ -16,7 +16,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a href="{{ url('/landingpage') }}" class="navbar-brand ps-3">
+        <a href="{{ url('/') }}" class="navbar-brand ps-3">
             <img src="{{ asset('images/aldstore2.png') }}" alt="AdminYve" width="150">
         </a>
         <!-- Sidebar Toggle-->
@@ -105,8 +105,8 @@
                             Daftar Pengguna
                         </a>
                         <div class="sb-sidenav-menu-heading">Lainnya</div>
-                        <a class="nav-link {{ request()->url('/landingpage') == url('/landingpage') ? 'active' : '' }}"
-                            href="{{ url('/landingpage') }}">
+                        <a class="nav-link {{ request()->url('/') == url('/') ? 'active' : '' }}"
+                            href="{{ url('/') }}">
                             <div class="sb-nav-link-icon">
                                 <i class="fas fa-home"></i>
                             </div>
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Kamu login sebagai : {{ Auth::user()->role }}</div>
+                    <div class="small">{{ Auth::user()->nama }} : Sebagai {{ Auth::user()->role }}</div>
                 </div>
             </nav>
         </div>
@@ -149,7 +149,8 @@
         crossorigin="anonymous"></script>
     <script src="{{ asset('assets/js/datatables-simple-demo.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.js"
+        integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
 
     <script>
         $('#logout').click(function(event) {
@@ -167,6 +168,54 @@
                 if (result.isConfirmed) {
                     // Redirect ke URL logout setelah dikonfirmasi
                     window.location.href = "{{ url('logout') }}";
+                }
+            });
+        });
+    </script>
+    <script>
+        // Sorting function
+        function sortTable(columnIndex, order) {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.querySelector("table");
+            switching = true;
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("td")[columnIndex];
+                    y = rows[i + 1].getElementsByTagName("td")[columnIndex];
+                    if (order === "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (order === "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+
+        // Add event listeners to the sortable columns
+        var sortableColumns = document.querySelectorAll("th[data-sort]");
+        sortableColumns.forEach(function (column) {
+            column.addEventListener("click", function () {
+                var columnIndex = Array.prototype.indexOf.call(column.parentNode.children, column);
+                var order = column.getAttribute("data-order");
+                if (order === "asc") {
+                    column.setAttribute("data-order", "desc");
+                    sortTable(columnIndex, "desc");
+                } else {
+                    column.setAttribute("data-order", "asc");
+                    sortTable(columnIndex, "asc");
                 }
             });
         });

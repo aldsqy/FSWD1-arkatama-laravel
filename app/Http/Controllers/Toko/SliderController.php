@@ -40,8 +40,14 @@ class SliderController extends Controller
     {
         $request->validate([
             'banner' => 'required',
-            'nama' => 'required',
-            'url' => 'required',
+            'nama' => 'required|min:4',
+            'url' => 'required|url',
+        ], [
+            'banner.required' => 'Banner tidak boleh kosong',
+            'nama.required' => 'Nama tidak boleh kosong',
+            'nama.min' => 'Nama harus terdiri dari minimal :min karakter',
+            'url.required' => 'URL tidak boleh kosong',
+            'url.url' => 'URL harus berupa URL yang valid',
         ]);
 
         $slider = Slider::create($request->except(['_token']));
@@ -92,8 +98,13 @@ class SliderController extends Controller
     {
 
         $request->validate([
-            'nama' => 'required',
+            'nama' => 'required|min:4',
             'url' => 'required',
+        ], [
+            'nama.required' => 'Nama tidak boleh kosong',
+            'nama.min' => 'Nama harus terdiri dari minimal :min karakter',
+            'url.required' => 'URL tidak boleh kosong',
+            'url.url' => 'URL harus berupa URL yang valid',
         ]);
 
         $slider = Slider::find($id);

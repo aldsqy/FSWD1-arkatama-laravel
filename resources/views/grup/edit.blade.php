@@ -22,6 +22,7 @@
         <div class="form-group row">
             <div class="col-sm-10 offset-sm-2">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ url('/grup') }}" class="btn btn-danger">Batal</a>
             </div>
         </div>
     </form>

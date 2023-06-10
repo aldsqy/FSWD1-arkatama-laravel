@@ -12,15 +12,16 @@
             <label for="role" class="col-sm-2 col-form-label mb-3">Pilih Role:</label>
             <div class="col-sm-10">
                 <select name="role" class="form-control" required>
-                    <option value="admin">User</option>
+                    <option value="user">User</option>
                     <option value="staff">Staff</option>
-                    <option value="staff">Admin</option>
+                    <option value="admin">Admin</option>
                 </select>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-10 offset-sm-2">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ url('/grup') }}" class="btn btn-danger">Batal</a>
             </div>
         </div>
     </form>

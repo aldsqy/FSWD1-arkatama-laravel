@@ -8,11 +8,8 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6 text-center">
                         <h2 data-aos="fade-down">Selamat Datang di <span>Aldstore</span></h2>
-                        <p data-aos="fade-up">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                            ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <a data-aos="fade-up" data-aos-delay="200" href="#services" class="btn-get-started">Mulai
+                        <p data-aos="fade-up">Kami adalah perusahaan kreatif yang menyediakan layanan desain UI, desain grafis, pengembangan aplikasi web dll. Kami fokus pada menciptakan pengalaman yang menarik dan intuitif untuk produk dan layanan Anda.</p>
+                        <a data-aos="fade-up" data-aos-delay="200" href="#services" class="btn-get-started">Explore
                             Sekarang</a>
                     </div>
                 </div>
@@ -41,10 +38,8 @@
         <section id="services" class="services section-bg">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
-                    <h2>Services</h2>
-                    <p>Voluptatem quibusdam ut ullam perferendis repellat non ut consequuntur est eveniet deleniti
-                        fignissimos eos
-                        quam</p>
+                    <h2>Kategori</h2>
+                    <p>Temukan layanan yang menginspirasi dan membawa ide-ide Anda ke level berikutnya.</p>
                 </div>
                 <div class="row gy-4">
                     @foreach ($kategori as $row)
@@ -68,206 +63,54 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Our Projects</h2>
-                    <p>Consequatur libero assumenda est voluptatem est quidem illum et officia imilique qui vel architecto
-                        accusamus fugit aut qui distinctio</p>
+                    <h2>Produk Populer</h2>
+                    <p>Lihat produk-produk terbaru yang memikat dan memberikan solusi inovatif untuk kebutuhan bisnis Anda.</p>
                 </div>
 
                 <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry"
                     data-portfolio-sort="original-order">
-
-                    <ul class="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-remodeling">Remodeling</li>
-                        <li data-filter=".filter-construction">Construction</li>
-                        <li data-filter=".filter-repairs">Repairs</li>
-                        <li data-filter=".filter-design">Design</li>
-                    </ul><!-- End Projects Filters -->
-
                     <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/remodeling-1.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Remodeling 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/remodeling-1.jpg" title="Remodeling 1"
-                                        data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
+                        <?php $count = 0; ?>
+                        <?php foreach ($produk as $produks): ?>
+                        <?php if ($count >= 6) {
+                            break;
+                        } ?>
+                        <div class="col-lg-4 col-md-6 portfolio-item">
+                            @auth
+                                <a href="{{ route('produk.show', ['id' => $produks->id]) }}" class="portfolio-link">
+                                @else
+                                    <a href="{{ url('login') }}" class="portfolio-link">
+                                    @endauth
+                                    <div class="portfolio-content h-100" data-aos="fade-up" data-aos-delay="200">
+                                        <div class="portfolio-card">
+                                            <div class="category-title"><?php echo $produks->kategori->kategori; ?></div>
+                                            <img src="<?php echo asset('images/' . $produks->gambar); ?>" class="img-fluid" alt="">
+                                            <div class="portfolio-info">
+                                                <h4><?php echo $produks->nama; ?></h4>
+                                                <div class="portfolio-details">
+                                                    <p>Rp <span class="portfolio-price"><?php echo number_format($produks->harga, 0, ',', '.'); ?></span></p>
+                                                </div>
+                                                @auth
+                                                    <a href="https://mail.google.com/mail/?view=cm&to=aldiarya2002@gmail.com&su=Pesanan%20Produk&body=Saya%20ingin%20memesan%20produk"
+                                                        class="portfolio-buy" target="_blank">Pesan Sekarang</a>
+                                                @else
+                                                    <a href="{{ url('login') }}" class="portfolio-buy">Pesan Sekarang</a>
+                                                @endauth
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
                         </div><!-- End Projects Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-construction">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/construction-1.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Construction 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/construction-1.jpg" title="Construction 1"
-                                        data-gallery="portfolio-gallery-construction" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Projects Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-repairs">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/repairs-1.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Repairs 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/repairs-1.jpg" title="Repairs 1"
-                                        data-gallery="portfolio-gallery-repairs" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Projects Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-design">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/design-1.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Design 1</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/design-1.jpg" title="Repairs 1"
-                                        data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Projects Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/remodeling-2.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Remodeling 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/remodeling-2.jpg" title="Remodeling 2"
-                                        data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Projects Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-construction">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/construction-2.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Construction 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/construction-2.jpg" title="Construction 2"
-                                        data-gallery="portfolio-gallery-construction" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Projects Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-repairs">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/repairs-2.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Repairs 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/repairs-2.jpg" title="Repairs 2"
-                                        data-gallery="portfolio-gallery-repairs" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Projects Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-design">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/design-2.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Design 2</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/design-2.jpg" title="Repairs 2"
-                                        data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Projects Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/remodeling-3.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Remodeling 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/remodeling-3.jpg" title="Remodeling 3"
-                                        data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Projects Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-construction">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/construction-3.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Construction 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/construction-3.jpg" title="Construction 3"
-                                        data-gallery="portfolio-gallery-construction" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Projects Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-repairs">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/repairs-3.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Repairs 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/repairs-3.jpg" title="Repairs 2"
-                                        data-gallery="portfolio-gallery-repairs" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Projects Item -->
-
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-design">
-                            <div class="portfolio-content h-100">
-                                <img src="assets/img/projects/design-3.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                    <h4>Design 3</h4>
-                                    <p>Lorem ipsum, dolor sit amet consectetur</p>
-                                    <a href="assets/img/projects/design-3.jpg" title="Repairs 3"
-                                        data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                    <a href="project-details.html" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                </div>
-                            </div>
-                        </div><!-- End Projects Item -->
-
+                        <?php $count++; ?>
+                        <?php endforeach; ?>
                     </div><!-- End Projects Container -->
-
+                    <div class="text-center mt-4">
+                        @auth
+                            <a href="{{ url('landingpage/product') }}" class="btn-get-started">Lihat Lebih Banyak</a>
+                        @else
+                            <a href="{{ url('login') }}" class="btn-get-started">Lihat Lebih Banyak</a>
+                        @endauth
+                    </div>
                 </div>
 
             </div>
@@ -278,10 +121,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Testimonials</h2>
-                    <p>Quam sed id excepturi ccusantium dolorem ut quis dolores nisi llum nostrum enim velit qui ut et autem
-                        uia
-                        reprehenderit sunt deleniti</p>
+                    <h2>Daftar Testimoni</h2>
+                    <p>Dengarkan pengalaman klien kami dan bagaimana layanan kami telah memberikan nilai tambah bagi mereka.</p>
                 </div>
 
                 <div class="slides-2 swiper">
@@ -290,7 +131,8 @@
                             <div class="swiper-slide">
                                 <div class="testimonial-wrap">
                                     <div class="testimonial-item">
-                                        <img src="{{ asset('images/' . $item->foto) }}" class="testimonial-img" alt="">
+                                        <img src="{{ asset('images/' . $item->foto) }}" class="testimonial-img"
+                                            alt="">
                                         <h3>{{ $item->nama }}</h3>
                                         <h4>{{ $item->jabatan }}</h4>
                                         <div class="stars">

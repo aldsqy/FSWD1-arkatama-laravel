@@ -18,8 +18,7 @@ class PenggunaController extends Controller
     {
 
         $pengguna = Pengguna::all();
-        return view('pengguna.pengguna',compact('pengguna'));
-
+        return view('pengguna.pengguna', compact('pengguna'));
     }
 
     /**
@@ -31,7 +30,6 @@ class PenggunaController extends Controller
     {
 
         return view('pengguna.create');
-
     }
 
     /**
@@ -43,12 +41,21 @@ class PenggunaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'avatar' => 'required',
-            'email' => 'required',
-            'nama' => 'required',
-            'phone' => 'required',
+            'email' => 'required|email:rfc,dns|min:4',
+            'nama' => 'required|min:4',
+            'phone' => 'required|numeric',
             'address' => 'required',
             'password' => 'required',
+        ], [
+            'email.required' => 'Email tidak boleh kosong',
+            'email.email' => 'Format email tidak valid',
+            'email.min' => 'Email minimal harus terdiri dari :min karakter',
+            'nama.required' => 'Nama tidak boleh kosong',
+            'nama.min' => 'Nama minimal harus terdiri dari :min karakter',
+            'phone.required' => 'Nomor telepon tidak boleh kosong',
+            'phone.numeric' => 'Nomor telepon harus berupa angka',
+            'address.required' => 'Alamat tidak boleh kosong',
+            'password.required' => 'Password tidak boleh kosong',
         ]);
 
         $pengguna = Pengguna::create($request->except(['_token']));
@@ -63,7 +70,6 @@ class PenggunaController extends Controller
         $pengguna->save();
 
         return redirect('/pengguna')->with('success', 'Kamu Telah Berhasil Menambahkan Data');
-
     }
 
     /**
@@ -89,7 +95,6 @@ class PenggunaController extends Controller
         $pengguna = Pengguna::find($id);
         return view('pengguna.edit', compact('pengguna'));
         return view('pengguna.edit');
-
     }
 
     /**
@@ -102,11 +107,20 @@ class PenggunaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|email:rfc,dns|min:4',
             'nama' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|numeric',
             'address' => 'required',
             'password' => 'required',
+        ], [
+            'email.required' => 'Email tidak boleh kosong',
+            'email.email' => 'Format email tidak valid',
+            'email.min' => 'Email minimal harus terdiri dari :min karakter',
+            'nama.required' => 'Nama tidak boleh kosong',
+            'phone.required' => 'Nomor telepon tidak boleh kosong',
+            'phone.numeric' => 'Nomor telepon harus berupa angka',
+            'address.required' => 'Alamat tidak boleh kosong',
+            'password.required' => 'Password tidak boleh kosong',
         ]);
 
         $pengguna = Pengguna::find($id);
@@ -127,7 +141,6 @@ class PenggunaController extends Controller
         $pengguna->update();
 
         return redirect('/pengguna')->with('success2', 'Kamu Telah Berhasil Memperbarui Data');
-
     }
 
     /**
@@ -142,6 +155,5 @@ class PenggunaController extends Controller
         $pengguna = Pengguna::findOrFail($id);
         $pengguna->delete();
         return redirect('/pengguna');
-
     }
 }

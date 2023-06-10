@@ -38,8 +38,12 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kategori' => 'required',
+            'kategori' => 'required|min:3',
             'deskripsi' => 'required',
+        ] ,[
+            'kategori.required' => 'Kategori tidak boleh kosong',
+            'kategori.min' => 'Kategori minimal harus terdiri dari :min karakter',
+            'deskripsi.required' => 'Deskripsi tidak boleh kosong',
         ]);
 
         Kategori::create($request->except(['_token', 'submit']));
@@ -80,8 +84,12 @@ class KategoriController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kategori' => 'required',
+            'kategori' => 'required|min:3',
             'deskripsi' => 'required',
+        ] ,[
+            'kategori.required' => 'Kategori tidak boleh kosong',
+            'kategori.min' => 'Kategori minimal harus terdiri dari :min karakter',
+            'deskripsi.required' => 'Deskripsi tidak boleh kosong',
         ]);
 
         $kategori = Kategori::find($id);

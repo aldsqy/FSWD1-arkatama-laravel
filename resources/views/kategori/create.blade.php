@@ -12,7 +12,7 @@
             <label for="kategori" class="col-sm-2 col-form-label mb-3">Kategori:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="kategori" class="form-control @error('kategori') is-invalid @enderror"
-                    value="{{ old('kategori') }}" placeholder="Enter category">
+                    value="{{ old('kategori') }}" placeholder="Ketikkan category...">
                 @error('kategori')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -23,8 +23,8 @@
         <div class="form-group row">
             <label for="deskripsi" class="col-sm-2 col-form-label mb-3">Deskripsi:</label>
             <div class="col-sm-10 mb-3">
-                <input type="text" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"
-                    value="{{ old('deskripsi') }}" placeholder="Enter deskripsi">
+                <textarea name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="4"
+                    placeholder="Ketikkan deskripsi...">{{ old('deskripsi') }}</textarea>
                 @error('deskripsi')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -35,6 +35,7 @@
         <div class="form-group row">
             <div class="col-sm-10 offset-sm-2">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ url('/kategori') }}" class="btn btn-danger">Batal</a>
             </div>
         </div>
     </form>

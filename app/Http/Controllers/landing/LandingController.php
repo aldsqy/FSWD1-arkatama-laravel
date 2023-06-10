@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use App\Models\Kategori;
 use App\Models\Testimoni;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -15,16 +16,24 @@ class LandingController extends Controller
         $slider = Slider::all();
         $kategori = Kategori::all();
         $testimoni = Testimoni::all();
+        $produk = Produk::where('status', 'accepted')->get();
+
         return view('landing.index', [
             'slider' => $slider,
             'kategori' => $kategori,
-            'testimoni' => $testimoni
+            'testimoni' => $testimoni,
+            'produk' => $produk
         ]);
     }
 
     public function product()
     {
-        return view('landing.product');
-    }
+        $kategori = Kategori::all();
+        $produk = Produk::where('status', 'accepted')->get();
 
+        return view('landing.product', [
+            'kategori' => $kategori,
+            'produk' => $produk
+        ]);
+    }
 }

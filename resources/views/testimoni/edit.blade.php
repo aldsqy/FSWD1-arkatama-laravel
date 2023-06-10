@@ -19,14 +19,14 @@
         <div class="form-group row">
             <label for="foto" class="col-sm-2 col-form-label mb-3">Foto:</label>
             <div class="col-sm-10">
-                <input type="file" name="foto" class="form-control-file mb-3">
+                <input type="file" name="foto" class="form-control mb-3">
             </div>
         </div>
         <div class="form-group row">
             <label for="nama" class="col-sm-2 col-form-label mb-3">Nama:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
-                    placeholder="Enter nama" value="{{ old('nama', $testimoni->nama) }}">
+                    placeholder="Ketikkan nama..." value="{{ old('nama', $testimoni->nama) }}">
                     @error('nama')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -38,7 +38,7 @@
             <label for="jabatan" class="col-sm-2 col-form-label mb-3">Jabatan:</label>
             <div class="col-sm-10 mb-3">
                 <input type="text" name="jabatan" class="form-control @error('jabatan') is-invalid @enderror"
-                    placeholder="Enter jabatan" value="{{ old('jabatan', $testimoni->jabatan) }}">
+                    placeholder="Ketikkan jabatan..." value="{{ old('jabatan', $testimoni->jabatan) }}">
                     @error('jabatan')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -50,7 +50,7 @@
             <label for="rating" class="col-sm-2 col-form-label mb-3">Rating:</label>
             <div class="col-sm-10 mb-3">
                 <select name="rating" class="form-control @error('rating') is-invalid @enderror">
-                    <option value="">Select rating</option>
+                    <option value="">Pilih rating</option>
                     @for ($i = 1; $i <= 5; $i++)
                         <option value="{{ $i }}" {{ old('rating', $testimoni->rating) == $i ? 'selected' : '' }}>
                             {{ $i }}
@@ -67,9 +67,8 @@
         <div class="form-group row">
             <label for="deskripsi" class="col-sm-2 col-form-label mb-3">Deskripsi:</label>
             <div class="col-sm-10 mb-3">
-                <input type="text" name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"
-                    placeholder="Enter deskripsi" value="{{ old('deskripsi', $testimoni->deskripsi) }}">
-                    @error('deskripsi')
+                <textarea name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="4" placeholder="Ketikkan deskripsi...">{{ old('deskripsi', $testimoni->deskripsi) }}</textarea>
+                @error('deskripsi')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -79,6 +78,7 @@
         <div class="form-group row">
             <div class="col-sm-10 offset-sm-2">
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ url('/testimoni') }}" class="btn btn-danger">Batal</a>
             </div>
         </div>
     </form>
