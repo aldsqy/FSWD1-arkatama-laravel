@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('kategori', 100);
             $table->text('deskripsi')->nullable();
+            $table->enum('status', ['accepted', 'rejected', 'waiting']);
             $table->timestamps();
         });
     }

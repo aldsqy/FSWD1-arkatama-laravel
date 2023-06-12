@@ -8,7 +8,9 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6 text-center">
                         <h2 data-aos="fade-down">Selamat Datang di <span>Aldstore</span></h2>
-                        <p data-aos="fade-up">Kami adalah perusahaan kreatif yang menyediakan layanan desain UI, desain grafis, pengembangan aplikasi web dll. Kami fokus pada menciptakan pengalaman yang menarik dan intuitif untuk produk dan layanan Anda.</p>
+                        <p data-aos="fade-up">Kami adalah perusahaan kreatif yang menyediakan layanan desain UI, desain
+                            grafis, pengembangan aplikasi web dll. Kami fokus pada menciptakan pengalaman yang menarik dan
+                            intuitif untuk produk dan layanan Anda.</p>
                         <a data-aos="fade-up" data-aos-delay="200" href="#services" class="btn-get-started">Explore
                             Sekarang</a>
                     </div>
@@ -64,7 +66,8 @@
 
                 <div class="section-header">
                     <h2>Produk Populer</h2>
-                    <p>Lihat produk-produk terbaru yang memikat dan memberikan solusi inovatif untuk kebutuhan bisnis Anda.</p>
+                    <p>Lihat produk-produk terbaru yang memikat dan memberikan solusi inovatif untuk kebutuhan bisnis Anda.
+                    </p>
                 </div>
 
                 <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry"
@@ -91,7 +94,7 @@
                                                     <p>Rp <span class="portfolio-price"><?php echo number_format($produks->harga, 0, ',', '.'); ?></span></p>
                                                 </div>
                                                 @auth
-                                                    <a href="https://mail.google.com/mail/?view=cm&to=aldiarya2002@gmail.com&su=Pesanan%20Produk&body=Saya%20ingin%20memesan%20produk"
+                                                    <a href="https://api.whatsapp.com/send?phone=6285232040531&text=Halo%20admin%20aldstore,%20saya%20ingin%20memesan%20produk"
                                                         class="portfolio-buy" target="_blank">Pesan Sekarang</a>
                                                 @else
                                                     <a href="{{ url('login') }}" class="portfolio-buy">Pesan Sekarang</a>
@@ -122,7 +125,8 @@
 
                 <div class="section-header">
                     <h2>Daftar Testimoni</h2>
-                    <p>Dengarkan pengalaman klien kami dan bagaimana layanan kami telah memberikan nilai tambah bagi mereka.</p>
+                    <p>Dengarkan pengalaman klien kami dan bagaimana layanan kami telah memberikan nilai tambah bagi mereka.
+                    </p>
                 </div>
 
                 <div class="slides-2 swiper">

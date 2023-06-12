@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
-    protected $fillable = ['kategori', 'deskripsi'];
+    protected $fillable = ['kategori', 'deskripsi', 'status'];
 
     protected $table = 'kategori';
+
+    protected $casts = [
+        'status' => 'string',
+    ];
 
     public function produk()
     {

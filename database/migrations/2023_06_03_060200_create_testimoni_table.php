@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('jabatan', 100);
             $table->text('deskripsi')->nullable();
             $table->integer('rating');
+            $table->enum('status', ['accepted', 'rejected', 'waiting']);
             $table->timestamps();
         });
     }

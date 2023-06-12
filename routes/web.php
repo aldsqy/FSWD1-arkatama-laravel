@@ -24,18 +24,18 @@ use App\Http\Controllers\DashboardController;
 // Route::middleware(['auth',])->group(function () {
 //Kategori
 Route::get('kategori', [KategoriController::class, 'index'])->middleware(['auth','admin-staff']);
-Route::get('kategori/create', [KategoriController::class, 'create'])->middleware(['auth','admin']);
-Route::post('kategori/store', [KategoriController::class, 'store'])->name('kategori.store')->middleware(['auth','admin']);
-Route::get('kategori/{id}/edit', [KategoriController::class, 'edit'])->middleware(['auth','admin']);
-Route::put('kategori/{id}', [KategoriController::class, 'update'])->middleware(['auth','admin']);
+Route::get('kategori/create', [KategoriController::class, 'create'])->middleware(['auth','admin-staff']);
+Route::post('kategori/store', [KategoriController::class, 'store'])->name('kategori.store')->middleware(['auth','admin-staff']);
+Route::get('kategori/{id}/edit', [KategoriController::class, 'edit'])->middleware(['auth','admin-staff']);
+Route::put('kategori/{id}', [KategoriController::class, 'update'])->middleware(['auth','admin-staff']);
 Route::delete('kategori/{id}', [KategoriController::class, 'destroy'])->middleware(['auth','admin']);
 
 //Produk
 Route::get('produks', [Produk1Controller::class, 'index'])->middleware(['auth','admin-staff']);
-Route::get('produks/create', [Produk1Controller::class, 'create'])->middleware(['auth','admin']);
-Route::post('produks/store', [Produk1Controller::class, 'store'])->name('produk.store')->middleware(['auth','admin']);
-Route::get('produks/{id}/edit', [Produk1Controller::class, 'edit'])->middleware(['auth','admin']);
-Route::put('produks/{id}', [Produk1Controller::class, 'update'])->middleware(['auth','admin']);
+Route::get('produks/create', [Produk1Controller::class, 'create'])->middleware(['auth','admin-staff']);
+Route::post('produks/store', [Produk1Controller::class, 'store'])->name('produk.store')->middleware(['auth','admin-staff']);
+Route::get('produks/{id}/edit', [Produk1Controller::class, 'edit'])->middleware(['auth','admin-staff']);
+Route::put('produks/{id}', [Produk1Controller::class, 'update'])->middleware(['auth','admin-staff']);
 Route::delete('produks/{id}', [Produk1Controller::class, 'destroy'])->middleware(['auth','admin']);
 Route::get('produks/{id}', [Produk1Controller::class, 'show'])->name('produk.show')->middleware(['auth']);
 
@@ -49,10 +49,10 @@ Route::delete('pengguna/{id}', [PenggunaController::class, 'destroy'])->middlewa
 
 //Slider
 Route::get('slider', [SliderController::class, 'index'])->middleware(['auth','admin-staff']);
-Route::get('slider/create', [SliderController::class, 'create'])->middleware(['auth','admin']);
-Route::post('slider/store', [SliderController::class, 'store'])->name('slider.store')->middleware(['auth','admin']);
-Route::get('slider/{id}/edit', [SliderController::class, 'edit'])->middleware(['auth','admin']);
-Route::put('slider/{id}', [SliderController::class, 'update'])->middleware(['auth','admin']);
+Route::get('slider/create', [SliderController::class, 'create'])->middleware(['auth','admin-staff']);
+Route::post('slider/store', [SliderController::class, 'store'])->name('slider.store')->middleware(['auth','admin-staff']);
+Route::get('slider/{id}/edit', [SliderController::class, 'edit'])->middleware(['auth','admin-staff']);
+Route::put('slider/{id}', [SliderController::class, 'update'])->middleware(['auth','admin-staff']);
 Route::delete('slider/{id}', [SliderController::class, 'destroy'])->middleware(['auth','admin']);
 
 //Grup
@@ -66,10 +66,10 @@ Route::delete('grup/{id}', [GrupController::class, 'destroy'])->middleware(['aut
 //Testimoni
 use App\Http\Controllers\Toko\TestimoniController;
 Route::get('testimoni', [TestimoniController::class, 'index'])->middleware(['auth','admin-staff']);
-Route::get('testimoni/create', [TestimoniController::class, 'create'])->middleware(['auth','admin']);
-Route::post('testimoni/store', [TestimoniController::class, 'store'])->name('testimoni.store')->middleware(['auth','admin']);
-Route::get('testimoni/{id}/edit', [TestimoniController::class, 'edit'])->middleware(['auth','admin']);
-Route::put('testimoni/{id}', [TestimoniController::class, 'update'])->middleware(['auth','admin']);
+Route::get('testimoni/create', [TestimoniController::class, 'create'])->middleware(['auth','admin-staff']);
+Route::post('testimoni/store', [TestimoniController::class, 'store'])->name('testimoni.store')->middleware(['auth','admin-staff']);
+Route::get('testimoni/{id}/edit', [TestimoniController::class, 'edit'])->middleware(['auth','admin-staff']);
+Route::put('testimoni/{id}', [TestimoniController::class, 'update'])->middleware(['auth','admin-staff']);
 Route::delete('testimoni/{id}', [TestimoniController::class, 'destroy'])->middleware(['auth','admin']);
 
 //Dashboard

@@ -2,8 +2,7 @@
 
 @section('content')
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center"
-        style="background-image: url('{{ asset('assets/img/breadcrumbs-bg.jpg') }}');">
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('{{ asset('assets/img/foto1.jpg') }}');">
         <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
             <h2>{{ $produk->nama }}</h2>
             <ol>
@@ -40,8 +39,9 @@
                             <li><strong>Category</strong> <span>{{ $produk->kategori->kategori }}</span></li>
                             <li><strong>Dibuat</strong> <span>{{ $produk->created_at->format('d F Y') }}</span></li>
                             <li><strong>Harga</strong> <span>Rp {{ number_format($produk->harga, 0, ',', '.') }}</span></li>
-                            <li><a href="https://api.whatsapp.com/send?phone=nomor-telepon-anda&text=Saya%20ingin%20memesan%20{{ $produk->kategori->kategori }}"
-                                    class="btn-visit align-self-start">Pesan Sekarang</a></li>
+                            <li> <a href="https://api.whatsapp.com/send?phone=6285232040531&text=Halo%20admin%20aldstore,%20saya%20ingin%20memesan%20produk"
+                                    class="portfolio-buy" target="_blank">Pesan Sekarang</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

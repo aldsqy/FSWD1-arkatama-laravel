@@ -11,7 +11,7 @@ class Produk extends Model
     protected $table = 'produk';
 
     protected $casts = [
-        'status' => 'string', // jika Anda ingin mengonversi status ke string
+        'status' => 'string',
     ];
     public function kategori()
     {

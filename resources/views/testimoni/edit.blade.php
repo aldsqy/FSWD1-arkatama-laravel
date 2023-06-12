@@ -75,6 +75,20 @@
                 @enderror
             </div>
         </div>
+        @if (Auth::user()->role === 'staff')
+            <input type="hidden" name="status" value="waiting">
+        @elseif (Auth::user()->role === 'admin')
+            <div class="form-group row">
+                <label for="status" class="col-sm-2 col-form-label mb-3">Pilih Status:</label>
+                <div class="col-sm-10">
+                    <select name="status" class="form-control mb-3" required>
+                        <option value="accepted" {{ $testimoni->status === 'accepted' ? 'selected' : '' }}>Accepted</option>
+                        <option value="rejected" {{ $testimoni->status === 'rejected' ? 'selected' : '' }}>Rejected</option>
+                        <option value="waiting" {{ $testimoni->status === 'waiting' ? 'selected' : '' }}>Waiting</option>
+                    </select>
+                </div>
+            </div>
+        @endif
         <div class="form-group row">
             <div class="col-sm-10 offset-sm-2">
                 <button type="submit" class="btn btn-primary">Submit</button>

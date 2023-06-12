@@ -83,7 +83,7 @@
         <div class="form-group row">
             <label for="password" class="col-sm-2 col-form-label mb-3">Password:</label>
             <div class="col-sm-10 mb-3">
-                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
+                <input type="text" name="password" class="form-control @error('password') is-invalid @enderror"
                     placeholder="Ketikkan password..." value="{{ old('password', $pengguna->password) }}">
                     @error('password')
                     <div class="invalid-feedback">

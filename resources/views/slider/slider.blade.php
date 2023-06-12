@@ -5,10 +5,8 @@
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Lihat seluruh daftar slider</li>
     </ol>
-    @admin
-        <a href="{{ url('slider/create') }}" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"
-                style="margin-right: 8px;"></i>Tambah</a>
-    @endadmin
+    <a href="{{ url('slider/create') }}" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"
+            style="margin-right: 8px;"></i>Tambah</a>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -17,9 +15,8 @@
                     <th scope="col">Banner</th>
                     <th scope="col" data-sort="text">Nama</th>
                     <th scope="col" data-sort="text">URL</th>
-                    @admin
-                        <th scope="col">Aksi</th>
-                    @endadmin
+                    <th scope="col" data-sort="text">Status</th>
+                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,23 +24,25 @@
                     <tr>
                         <td class="align-middle">{{ $loop->iteration }}</td>
                         <td>
-                            <img src="{{ asset('images/' . $item->banner) }}" style="width: 150px; border-radius: 5px" alt="Banner">
+                            <img src="{{ asset('images/' . $item->banner) }}" style="width: 150px; border-radius: 5px"
+                                alt="Banner">
                         </td>
                         <td class="align-middle">{{ $item->nama }}</td>
                         <td class="align-middle">{{ $item->url }}</td>
+                        <td class="align-middle">{{ $item->status }}</td>
                         <td class="align-middle">
-                            @admin
-                                <div class="d-flex">
-                                    <a href="/slider/{{ $item->id }}/edit" class="btn btn-success  mx-2"><i
-                                            class="fa-solid fa-pen"></i></a>
+                            <div class="d-flex">
+                                <a href="/slider/{{ $item->id }}/edit" class="btn btn-success  mx-2"><i
+                                        class="fa-solid fa-pen"></i></a>
+                                @admin
                                     <form action="/slider/{{ $item->id }}" method="POST" class="ml-2">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger delete"><i
                                                 class="fa-solid fa-trash"></i></button>
                                     </form>
-                                </div>
-                            @endadmin
+                                @endadmin
+                            </div>
                         </td>
                     </tr>
                 @endforeach

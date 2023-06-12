@@ -5,11 +5,9 @@
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Lihat seluruh daftar testimoni</li>
     </ol>
-    @admin
     <a href="{{ url('testimoni/create') }}" class="btn btn-primary mb-3">
         <i class="fa-solid fa-plus" style="margin-right: 8px;"></i>Tambah
     </a>
-    @endadmin
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -20,9 +18,8 @@
                     <th scope="col" data-sort="text">Jabatan</th>
                     <th scope="col" data-sort="text">Rating</th>
                     <th scope="col" data-sort="text">Deskripsi</th>
-                    @admin
+                    <th scope="col" data-sort="text">Status</th>
                     <th scope="col">Aksi</th>
-                    @endadmin
                 </tr>
             </thead>
             <tbody>
@@ -36,19 +33,20 @@
                         <td class="align-middle">{{ $item->jabatan }}</td>
                         <td class="align-middle">{{ $item->rating }}</td>
                         <td class="align-middle">{{ $item->deskripsi }}</td>
+                        <td class="align-middle">{{ $item->status }}</td>
                         <td class="align-middle">
-                            @admin
                                 <div class="d-flex">
                                     <a href="/testimoni/{{ $item->id }}/edit" class="btn btn-success  mx-2"><i
                                         class="fa-solid fa-pen"></i></a>
+                                    @admin
                                     <form action="/testimoni/{{ $item->id }}" method="POST" class="ml-2">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger delete"><i
                                             class="fa-solid fa-trash"></i></button>
                                     </form>
+                                    @endadmin
                                 </div>
-                            @endadmin
                         </td>
                     </tr>
                 @endforeach

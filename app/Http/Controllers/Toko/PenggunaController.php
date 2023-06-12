@@ -153,6 +153,13 @@ class PenggunaController extends Controller
     {
 
         $pengguna = Pengguna::findOrFail($id);
+        if ($pengguna->avatar) {
+            $filePath = public_path('images/' . $pengguna->avatar);
+            if (File::exists($filePath)) {
+                File::delete($filePath);
+            }
+        }
+
         $pengguna->delete();
         return redirect('/pengguna');
     }

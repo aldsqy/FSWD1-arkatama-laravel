@@ -7,6 +7,7 @@ use App\Models\Kategori;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 
 class Produk1Controller extends Controller
 {
@@ -18,7 +19,7 @@ class Produk1Controller extends Controller
     public function index()
     {
         $produk = Produk::all();
-        return view('produk.produk', compact('produk'));
+        return view('Produk.produk', compact('produk'));
     }
 
     /**
@@ -140,6 +141,11 @@ class Produk1Controller extends Controller
     public function destroy($id)
     {
         $produk = Produk::findOrFail($id);
+        $filePath = public_path('images/' . $produk->gambar);
+        if (File::exists($filePath)) {
+            File::delete($filePath);
+        }
+
         $produk->delete();
         return redirect('/produks');
     }

@@ -33,7 +33,7 @@
     <header id="header" class="header d-flex align-items-center">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
             <a href="{{ url('/') }}" class="logo d-flex align-items-center">
-                <img src="{{ asset('images/aldstore2.png') }}" alt="AdminYve" width="150" style="margin: 12px 32px;">
+                <img src="{{ asset('images/Aldstore2.jpg') }}" alt="AdminYve" width="150" style="margin: 12px 32px;">
             </a>
 
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -76,7 +76,7 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="footer-info">
-                            <img src="{{ asset('images/aldstore2.png') }}" alt="AdminYve" width="150" style="margin: 0px 0px 16px 0px;">
+                            <img src="{{ asset('images/Aldstore2.jpg') }}" alt="AdminYve" width="150" style="margin: 0px 0px 16px 0px;">
                             <p>
                                 Tangerang, Banten<br>
                                 Graha Raya, Indonesia<br><br>
@@ -107,7 +107,7 @@
                     </div><!-- End footer links column-->
 
                     <div class="col-lg-2 col-md-3 footer-links">
-                        <h4>Produk Kami</h4>
+                        <h4>Kategori Popular</h4>
                         <ul>
                             <li><a href="#">Software Development</a></li>
                             <li><a href="#">User Interface</a></li>
@@ -117,7 +117,7 @@
                     </div><!-- End footer links column-->
 
                     <div class="col-lg-2 col-md-3 footer-links">
-                        <h4>Produk Terkenal</h4>
+                        <h4>Produk Popular</h4>
                         <ul>
                             <li><a href="#">Job Finder</a></li>
                             <li><a href="#">Finance</a></li>

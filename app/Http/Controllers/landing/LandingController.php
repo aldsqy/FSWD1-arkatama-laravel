@@ -13,9 +13,9 @@ class LandingController extends Controller
 {
     public function index()
     {
-        $slider = Slider::all();
-        $kategori = Kategori::all();
-        $testimoni = Testimoni::all();
+        $slider = Slider::where('status', 'accepted')->get();
+        $kategori = Kategori::where('status', 'accepted')->get();
+        $testimoni = Testimoni::where('status', 'accepted')->get();
         $produk = Produk::where('status', 'accepted')->get();
 
         return view('landing.index', [
@@ -28,7 +28,7 @@ class LandingController extends Controller
 
     public function product()
     {
-        $kategori = Kategori::all();
+        $kategori = Kategori::where('status', 'accepted')->get();
         $produk = Produk::where('status', 'accepted')->get();
 
         return view('landing.product', [

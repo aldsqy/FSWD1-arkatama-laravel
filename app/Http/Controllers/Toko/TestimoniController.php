@@ -143,6 +143,11 @@ class TestimoniController extends Controller
     public function destroy($id)
     {
         $testimoni = Testimoni::findOrFail($id);
+        $filePath = public_path('images/' . $testimoni->foto);
+        if (File::exists($filePath)) {
+            File::delete($filePath);
+        }
+
         $testimoni->delete();
         return redirect('/testimoni');
     }

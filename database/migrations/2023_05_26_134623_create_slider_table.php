@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama', 100);
             $table->string('url', 100);
             $table->string('banner', 100);
+            $table->enum('status', ['accepted', 'rejected', 'waiting']);
             $table->timestamps();
         });
     }

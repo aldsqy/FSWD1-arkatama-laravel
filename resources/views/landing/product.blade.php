@@ -45,9 +45,8 @@
                                             <div class="portfolio-details">
                                                 <p>Rp <span class="portfolio-price"><?php echo number_format($produks->harga, 0, ',', '.'); ?></span></p>
                                             </div>
-                                            <a href="https://api.whatsapp.com/send?phone=nomor-telepon-anda&text=Saya%20ingin%20memesan%20<?php echo $produks->kategori->kategori; ?>"
-                                                class="portfolio-buy">Pesan Sekarang</a>
-
+                                            <a href="https://api.whatsapp.com/send?phone=6285232040531&text=Halo%20admin%20aldstore,%20saya%20ingin%20memesan%20produk"
+                                                class="portfolio-buy" target="_blank">Pesan Sekarang</a>
                                         </div>
                                     </div>
                                 </div>
